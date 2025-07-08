@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quran/models/prayer_day.dart';
 
 class PrayerTable extends StatelessWidget {
-  const PrayerTable({super.key});
+  final PrayerDay prayerDay;
+  const PrayerTable({super.key, required this.prayerDay});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '04:18',
+            prayerDay.fajr,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -38,7 +40,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '06:05',
+            prayerDay.shurooq,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -57,7 +59,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '01:00',
+            prayerDay.dhuhr,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -76,7 +78,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '04:33',
+            prayerDay.asr,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -95,7 +97,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '08:12',
+            prayerDay.maghrib,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -114,7 +116,7 @@ class PrayerTable extends StatelessWidget {
             ),
           ),
           trailing: Text(
-            '09:33',
+            prayerDay.isha,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
