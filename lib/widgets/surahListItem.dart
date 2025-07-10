@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quran/constants/colors.dart' show kbuttonColor, ktextColor;
+import 'package:quran/views/athkar_screen.dart';
 import 'package:quran/views/surah_content.dart';
 
 class Surah_list_item extends StatelessWidget {
-   String name, revType, nOfSurahs, number;
-   Surah_list_item(
-     this.nOfSurahs,
-     this.name,
-     this.revType,
-     this.number,
-  );
+  String name, revType, nOfSurahs, number;
+  bool isSurah;
+  Surah_list_item(
+    this.nOfSurahs,
+    this.name,
+    this.revType,
+    this.number, {
+    required this.isSurah,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class Surah_list_item extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => SurahContent()),
+            MaterialPageRoute(builder: (context) => isSurah ? SurahContent() : AthkarScreen(keys: name,)),
           );
         },
 
@@ -54,22 +57,9 @@ class Surah_list_item extends StatelessWidget {
                   ],
                 ),
                 child: ListTile(
-                  leading: Stack(
-                    children: [
-                      SvgPicture.asset('Assets/images/muslim (1) 1.svg'),
-                      Positioned(
-                        top: 8,
-                        left: number.length == 1 ? 14 : 10,
-                        child: Text(
-                          '$number',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  leading: isSurah
+                      ? Leading(number: number)
+                      : Icon(Icons.arrow_back_ios_outlined),
                   title: Container(
                     width: 10,
                     child: Text(
@@ -80,10 +70,15 @@ class Surah_list_item extends StatelessWidget {
                       ),
                     ),
                   ),
-                  subtitle: Text(
-                    'عدد الاّيات : $nOfSurahs ',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
+                  subtitle: isSurah
+                      ? Text(
+                          'عدد الاّيات : $nOfSurahs ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        )
+                      : SizedBox(),
                   trailing: Text(
                     '$name',
                     style: TextStyle(
@@ -103,46 +98,35 @@ class Surah_list_item extends StatelessWidget {
   }
 }
 
-// class surah_item extends StatelessWidget {
-//   final String name, revType, nOfSurahs, number;
+class Leading extends StatelessWidget {
+  const Leading({super.key, required this.number});
 
-//   const surah_item({
-//     super.key,
-//     required this.name,
-//     required this.revType,
-//     required this.nOfSurahs,
-//     required this.number,
-//   });
+  final String number;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListTile(
-//       leading: Stack(
-//         children: [
-//           SvgPicture.asset('Assets/images/muslim (1) 1.svg'),
-//           Positioned(
-//             top: 8,
-//             left: number.length == 1 ? 14 : 10,
-//             child: Text(
-//               '$number',
-//               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//         ],
-//       ),
-//       title: Text(
-//         'عدد الاّيات : $nOfSurahs $revType',
-//         style: TextStyle(fontWeight: FontWeight.bold),
-//       ),
-//       trailing: Text(
-//         '$name',
-//         style: TextStyle(
-//           color: ktextColor,
-//           fontSize: 20,
-//           fontWeight: FontWeight.bold,
-//           fontFamily: 'Amiri',
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 45, // or whatever size your SVG is
+      height: 45,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SvgPicture.asset(
+            'Assets/images/muslim (1) 1.svg',
+            height: 45,
+            width: 45,
+            fit: BoxFit.contain,
+          ),
+          Text(
+            '$number',
+            style: TextStyle(
+              fontSize: 16, // Adjust as needed
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins',
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

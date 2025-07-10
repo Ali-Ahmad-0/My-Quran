@@ -12,7 +12,7 @@ class StartScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 160, width: double.infinity),
-          Image.asset('Assets/images/quran.png'  , height: 200,),
+          Image.asset('Assets/images/quran.png', height: 200),
           SizedBox(height: 65),
           Text(
             'My Quran',
@@ -55,7 +55,7 @@ class StartScreen extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Poppins'
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),

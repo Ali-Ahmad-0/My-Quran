@@ -18,10 +18,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Timer timer;
   late String currentTime;
+
   HijriCalendar hejri = HijriCalendar.now();
+
   DateTime dt = DateTime.now();
   bool isSelected = true;
-
+  bool isSurah = true;
 
   @override
   void initState() {
@@ -34,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  List<Surah_item> ayahs = ayahsList.map((e) => Surah_item.fromMap(e)).toList();
+  List<Surah_item> Surahs = surahsList
+      .map((e) => Surah_item.fromMap(e))
+      .toList();
 
   String _getCurrentTime() {
     final now = DateTime.now();
@@ -109,33 +113,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 5),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: kbuttonColor,
-                        borderRadius: BorderRadiusDirectional.circular(7),
-                      ),
-
-                      height: 35,
-                      width: 160,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 18,
-                            vertical: 7,
-                          ),
-                          child: Text(
-                            ' PM المغرب  8:00  ',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'poppins',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -145,17 +122,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       },
-                      child: Text(
-                        'عرض جميع مواقيت الصلاة',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: kbuttonColor,
+                          borderRadius: BorderRadiusDirectional.circular(7),
+                        ),
 
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold,
+                        height: 35,
+                        width: 160,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 18,
+                              vertical: 7,
+                            ),
+                            child: Text(
+                              ' مواقيت الصلاة',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'poppins',
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
+                    SizedBox(height: 10),
                   ],
                 ),
                 Image.asset(
@@ -179,6 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         isSelected = true;
+                        isSurah = true;
                       });
                     },
                     child: Container(
@@ -195,6 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: TextStyle(
                             color: isSelected ? Colors.white : kbuttonColor,
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'amiri',
                           ),
                         ),
                       ),
@@ -206,6 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     setState(() {
                       isSelected = false;
+                      isSurah = false;
                     });
                   },
                   child: Container(
@@ -218,10 +215,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'دعاء',
+                        'الاذكار',
                         style: TextStyle(
                           color: isSelected ? kbuttonColor : Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'amiri',
                         ),
                       ),
                     ),
@@ -233,12 +231,16 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
-              itemCount: ayahs.length, // number of items
+              itemCount: isSurah ? Surahs.length : athkarMap.length,
+
               itemBuilder: (context, index) {
                 return Surah_list_item(
-                  ayahs[index].numberOfAyahs.toString(),
-                  ayahs[index].name.toString(),
-                  ayahs[index].revelationType.toString(),
+                  isSurah: isSurah,
+                  isSurah ? Surahs[index].numberOfAyahs.toString() : '',
+                  isSurah
+                      ? Surahs[index].name.toString()
+                      : athkarMap.keys.toList()[index].toString(),
+                  isSurah ? Surahs[index].revelationType.toString() : '',
                   (index + 1).toString(),
                 );
               },

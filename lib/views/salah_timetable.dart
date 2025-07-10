@@ -14,30 +14,34 @@ class SalahTimetable extends StatefulWidget {
 
 class _SalahTimetableState extends State<SalahTimetable> {
   DateTime dt = DateTime.now();
+  late PrayerCubit _prayerCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _prayerCubit = PrayerCubit();
+    _prayerCubit.fetchPrayerTimes('cairo', DateFormat('dd-MM-yyy').format(dt));
+  }
+
+  @override
+  void dispose() {
+    _prayerCubit.close();
+    super.dispose();
+  }
 
   String getCurrentDate() {
     final formatter = DateFormat('dd MMMM yyyy');
     return formatter.format(dt);
   }
 
-  // @override
-  // void initState() {
-  //   BlocProvider.of<PrayerCubit>(
-  //     context,
-  //   ).fetchPrayerTimes('cairo', dt.toString());
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) =>
-          PrayerCubit()
-            ..fetchPrayerTimes("cairo", DateFormat('MM-dd-yyyy').format(dt)),
-      child: Scaffold(
-        body: BlocBuilder<PrayerCubit, PrayerState>(
-          builder: (context, state) {
-            return Stack(
+    return BlocProvider.value(
+      value: _prayerCubit,
+      child: BlocBuilder<PrayerCubit, PrayerState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: Stack(
               children: [
                 Column(
                   children: [
@@ -65,9 +69,9 @@ class _SalahTimetableState extends State<SalahTimetable> {
                             onTap: () {
                               setState(() {
                                 dt = dt.add(Duration(days: -1));
-                                context.read<PrayerCubit>().fetchPrayerTimes(
+                                _prayerCubit.fetchPrayerTimes(
                                   "cairo",
-                                  DateFormat('MM-dd-yyyy').format(dt),
+                                  DateFormat('dd-MM-yyyy').format(dt),
                                 );
                               });
                             },
@@ -86,9 +90,9 @@ class _SalahTimetableState extends State<SalahTimetable> {
                             onTap: () {
                               setState(() {
                                 dt = dt.add(Duration(days: 1));
-                                context.read<PrayerCubit>().fetchPrayerTimes(
+                                _prayerCubit.fetchPrayerTimes(
                                   "cairo",
-                                  DateFormat('MM-dd-yyyy').format(dt),
+                                  DateFormat('dd-MM-yyyy').format(dt),
                                 );
                               });
                             },
@@ -97,38 +101,43 @@ class _SalahTimetableState extends State<SalahTimetable> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 24,
-                      ),
-                      child: Builder(
-                        builder: (context) {
-                          if (state is PrayerLoaded) {
-                            // ابحث عن اليوم الحالي في القائمة
-                            final currentDay = state.prayerWeek.days.firstWhere(
-                              (day) =>
-                                  day.date == DateFormat('yyyy-M-d').format(dt),
-                              orElse: () => state.prayerWeek.days.first,
-                            );
+                    BlocBuilder<PrayerCubit, PrayerState>(
+                      builder: (context, state) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 24,
+                          ),
+                          child: Builder(
+                            builder: (context) {
+                              if (state is PrayerLoaded) {
+                                final currentDay = state.prayerWeek.days
+                                    .firstWhere(
+                                      (day) =>
+                                          day.date ==
+                                          DateFormat('dd-MM-yyyy').format(dt),
+                                      orElse: () => state.prayerWeek.days.first,
+                                    );
 
-                            return PrayerTable(prayerDay: currentDay);
-                          } else {
-                            return Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
-                            );
-                          }
-                        },
-                      ),
+                                return PrayerTable(prayerDay: currentDay);
+                              } else {
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
