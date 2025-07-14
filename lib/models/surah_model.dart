@@ -17,14 +17,14 @@ class Surah_item {
     this.revelationType,
   });
 
-  Surah_item.fromJson(Map<String, dynamic> json) {
-    number = json['number'];
-    name = json['name'];
-    englishName = json['englishName'];
-    englishNameTranslation = json['englishNameTranslation'];
-    numberOfAyahs = json['numberOfAyahs'];
-    revelationType = json['revelationType'];
-  }
+  // Surah_item.fromJson(Map<String, dynamic> json) {
+  //   number = json['number'];
+  //   name = json['name'];
+  //   englishName = json['englishName'];
+  //   englishNameTranslation = json['englishNameTranslation'];
+  //   numberOfAyahs = json['numberOfAyahs'];
+  //   revelationType = json['revelationType'];
+  // }
 
   factory Surah_item.fromMap(Map<String, dynamic> map) {
     return Surah_item(

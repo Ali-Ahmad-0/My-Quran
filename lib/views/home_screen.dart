@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
               itemCount: isSurah ? Surahs.length : athkarMap.length,

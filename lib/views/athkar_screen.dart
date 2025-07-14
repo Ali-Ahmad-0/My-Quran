@@ -9,16 +9,29 @@ class AthkarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('الاذكار')),
+      appBar: AppBar(
+        backgroundColor: kbuttonColor,
+        title: Text(
+          keys,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Amiri', // or 'Poppins', or remove for default
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.white), // for back button color
+        elevation: 0, // flat look, optional
+      ),
       body: Expanded(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: athkarMap[keys]!.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 ListTile(
                   leading: Text(
-                    'التكرار : 3 ',
+                    'التكرار : ${athkarMap[keys]![index]['counter']} ',
                     style: TextStyle(
                       color: kbuttonColor,
                       fontSize: 16,
@@ -27,17 +40,25 @@ class AthkarScreen extends StatelessWidget {
                     ),
                   ),
                   title: Text(
-                    'أعوذ بالـلـه من الشيطان الـرجـيم ﴿اللهُ لاَ إِلَٰهَ إِلاَّ هُـوَ الْـحَيُّ الْـقَيُّومُ لاَ تَأخذُهُ سنَةٌ ولا نومٌ لهُ ما في السَّمَاوَاتِ وما في الأَرضِ من ذا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بإِذنهِ يعْلَمُ ما بينَ أيدِيهِمْ وما خلفَهُمْ ولا يُحيطُونَ بِشيءٍ مِّن عِلْمِهِ إِلاَّ بِمَا شَاء وَسعَ كُرْسيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤودُهُ حِفظُهُمَا وهوَ العَليُّ العَظيمُ﴾ ',
+                    athkarMap[keys]![index]['text'] ?? 'unknown',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'amiri',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Divider(height: 2, thickness: 1, color: ktextColor),
-                    Image.asset(
-                      'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png',
-                      height: 30,
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      indent: MediaQuery.of(context).size.width * 0.1,
+                      endIndent: MediaQuery.of(context).size.width * 0.1,
+                      color: ktextColor,
                     ),
+                    Image.asset('Assets/images/pattern.png', height: 30),
                   ],
                 ),
               ],

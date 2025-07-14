@@ -23,7 +23,10 @@ class Surah_list_item extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => isSurah ? SurahContent() : AthkarScreen(keys: name,)),
+            MaterialPageRoute(
+              builder: (context) =>
+                  isSurah ? SurahContent() : AthkarScreen(keys: name),
+            ),
           );
         },
 
@@ -79,13 +82,16 @@ class Surah_list_item extends StatelessWidget {
                           ),
                         )
                       : SizedBox(),
-                  trailing: Text(
-                    '$name',
-                    style: TextStyle(
-                      color: ktextColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Amiri',
+                  trailing: Hero(
+                    tag: 1,
+                    child: Text(
+                      '$name',
+                      style: TextStyle(
+                        color: ktextColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Amiri',
+                      ),
                     ),
                   ),
                 ),
