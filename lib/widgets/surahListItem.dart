@@ -26,7 +26,7 @@ class Surah_list_item extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  isSurah ? AyahsScreen() : AthkarScreen(keys: name),
+                  isSurah ? SurahContent() : AthkarScreen(keys: name),
             ),
           );
         },

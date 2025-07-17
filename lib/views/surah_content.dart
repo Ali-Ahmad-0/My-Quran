@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
 class SurahContent extends StatelessWidget {
-  const SurahContent({super.key});
-
+  SurahContent({super.key});
+  final List<String> pages = [
+    'Assets/images/1.png',
+    'Assets/images/1.png',
+    'Assets/images/1.png',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [SizedBox(height: 100), Image.asset('Assets/images/1.png')],
+      body: PageView.builder(
+        reverse: true,
+       itemCount: pages.length,
+       itemBuilder: (context, index) {
+        return Image.asset(pages[index]);
+       },
       ),
     );
   }
