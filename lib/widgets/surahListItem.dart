@@ -8,7 +8,9 @@ import 'package:quran/views/surah_content.dart';
 class Surah_list_item extends StatelessWidget {
   String name, revType, nOfSurahs, number;
   bool isSurah;
+  int startPage;
   Surah_list_item(
+    this.startPage,
     this.nOfSurahs,
     this.name,
     this.revType,
@@ -26,7 +28,7 @@ class Surah_list_item extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  isSurah ? SurahContent() : AthkarScreen(keys: name),
+                  isSurah ? SurahContent(startPage: startPage,) : AthkarScreen(keys: name),
             ),
           );
         },

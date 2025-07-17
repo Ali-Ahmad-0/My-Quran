@@ -1,7 +1,7 @@
 import 'package:quran/widgets/surahListItem.dart';
 
 class Surah_item {
-  int? number;
+  int? number , startPage;
   String? name;
   String? englishName;
   String? englishNameTranslation;
@@ -9,6 +9,7 @@ class Surah_item {
   String? revelationType;
 
   Surah_item({
+    this.startPage,
     this.number,
     this.name,
     this.englishName,
@@ -34,6 +35,7 @@ class Surah_item {
       englishNameTranslation: map['englishNameTranslation'],
       numberOfAyahs: map['numberOfAyahs'],
       revelationType: map['revelationType'],
+      startPage: map['startPage'],
     );
   }
 }

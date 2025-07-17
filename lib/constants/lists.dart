@@ -1272,3 +1272,5 @@ const Map<String, List<Map<String, dynamic>>> athkarMap = {
     },
   ],
 };
+
+List<String> pageImagePath = List.generate(604, (index) => '${index + 1}.png');
