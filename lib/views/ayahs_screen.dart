@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+
+class AyahsScreen extends StatefulWidget {
+  const AyahsScreen({super.key});
+
+  @override
+  State<AyahsScreen> createState() => _AyahsScreenState();
+}
+
+class _AyahsScreenState extends State<AyahsScreen> {
+  Future<Map<String, dynamic>> loadQuranJson() async {
+    String jsonString = await rootBundle.loadString(
+      'Assets/quran-uthmani.json',
+    );
+    Map<String, dynamic> jsonMap = json.decode(jsonString);
+    return jsonMap;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Expanded(
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: 12,
+              ),
+              child: ListTile(
+                leading: Text('${index + 1}'),
+                title: Text(
+                  'مِّنَ ٱلَّذِينَ هَادُوا۟ يُحَرِّفُونَ ٱلْكَلِمَ عَن مَّوَاضِعِهِۦ وَيَقُولُونَ سَمِعْنَا وَعَصَيْنَا وَٱسْمَعْ غَيْرَ مُسْمَعٍۢ وَرَٰعِنَا لَيًّۢا بِأَلْسِنَتِهِمْ وَطَعْنًۭا فِى ٱلدِّينِ ۚ وَلَوْ أَنَّهُمْ قَالُوا۟ سَمِعْنَا وَأَطَعْنَا وَٱسْمَعْ وَٱنظُرْنَا لَكَانَ خَيْرًۭا لَّهُمْ وَأَقْوَمَ وَلَٰكِن لَّعَنَهُمُ ٱللَّهُ بِكُفْرِهِمْ فَلَا يُؤْمِنُونَ إِلَّا قَلِيلًۭا',
+                  style: TextStyle(fontFamily: 'amiri', fontSize: 24),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

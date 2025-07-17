@@ -27,41 +27,44 @@ class AthkarScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: athkarMap[keys]!.length,
           itemBuilder: (context, index) {
-            return Column(
-              children: [
-                ListTile(
-                  leading: Text(
-                    'التكرار : ${athkarMap[keys]![index]['counter']} ',
-                    style: TextStyle(
-                      color: kbuttonColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text(
+                      'التكرار : ${athkarMap[keys]![index]['counter']} ',
+                      style: TextStyle(
+                        color: kbuttonColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    title: Text(
+                      athkarMap[keys]![index]['text'] ?? 'unknown',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'amiri',
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                  title: Text(
-                    athkarMap[keys]![index]['text'] ?? 'unknown',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'amiri',
-                      fontWeight: FontWeight.w500,
-                    ),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Divider(
+                        height: 1,
+                        thickness: 1,
+                        indent: MediaQuery.of(context).size.width * 0.1,
+                        endIndent: MediaQuery.of(context).size.width * 0.1,
+                        color: ktextColor,
+                      ),
+                      Image.asset('Assets/images/pattern.png', height: 30),
+                    ],
                   ),
-                ),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Divider(
-                      height: 1,
-                      thickness: 1,
-                      indent: MediaQuery.of(context).size.width * 0.1,
-                      endIndent: MediaQuery.of(context).size.width * 0.1,
-                      color: ktextColor,
-                    ),
-                    Image.asset('Assets/images/pattern.png', height: 30),
-                  ],
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),

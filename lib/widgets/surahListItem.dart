@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quran/constants/colors.dart' show kbuttonColor, ktextColor;
 import 'package:quran/views/athkar_screen.dart';
+import 'package:quran/views/ayahs_screen.dart';
 import 'package:quran/views/surah_content.dart';
 
 class Surah_list_item extends StatelessWidget {
@@ -25,7 +26,7 @@ class Surah_list_item extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  isSurah ? SurahContent() : AthkarScreen(keys: name),
+                  isSurah ? AyahsScreen() : AthkarScreen(keys: name),
             ),
           );
         },

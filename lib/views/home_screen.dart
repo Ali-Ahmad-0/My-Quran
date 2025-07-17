@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
+import 'package:quran/models/prayer_day.dart';
 import 'package:quran/models/surah_model.dart';
 import 'package:quran/views/salah_timetable.dart';
 import 'package:quran/widgets/surahListItem.dart';
@@ -137,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               vertical: 7,
                             ),
                             child: Text(
-                              ' مواقيت الصلاة',
+                              'الصلاة',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -160,7 +161,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          SizedBox(height: 32),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: Row(
