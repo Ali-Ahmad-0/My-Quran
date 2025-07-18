@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
           SizedBox(height: 10),
           Container(
@@ -81,10 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      'Read the Quran easily',
-                      style: TextStyle(fontSize: 15, fontFamily: 'Poppins'),
-                    ),
+                    // Text(
+                    //   'Read the Quran easily',
+                    //   style: TextStyle(fontSize: 15, fontFamily: 'Poppins'),
+                    // ),
                     SizedBox(height: 5),
                     Text(
                       '$currentTime',
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               vertical: 7,
                             ),
                             child: Text(
-                              'الصلاة مواقيت',
+                              'مواقيت الصلاة',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,

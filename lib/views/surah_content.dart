@@ -31,11 +31,21 @@ class SurahContent extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '${index + 1} الصفحة',
                       style: TextStyle(
-                        fontFamily: 'poppins',
+                        fontFamily: 'amiri',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: ktextColor,
+                      ),
+                    ),
+                    Text(
+                      '$surahName',
+                      style: TextStyle(
+                        fontFamily: 'amiri',
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         color: ktextColor,
