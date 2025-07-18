@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
           SizedBox(height: 10),
           Container(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               vertical: 7,
                             ),
                             child: Text(
-                              'الصلاة',
+                              'الصلاة مواقيت',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -154,7 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Image.asset(
-                  'Assets/images/image 4.png',
+                  (dt.hour > 19 || dt.hour < 5)
+                      ? 'Assets/images/image 4.png'
+                      : 'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png',
                   height: 200,
                   width: 200,
                 ),
@@ -235,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               itemBuilder: (context, index) {
                 return Surah_list_item(
-                  Surahs[index].startPage ?? 0,
+                  Surahs[index].startPage!,
                   isSurah: isSurah,
                   isSurah ? Surahs[index].numberOfAyahs.toString() : '',
                   isSurah

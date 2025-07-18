@@ -27,8 +27,9 @@ class Surah_list_item extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  isSurah ? SurahContent(startPage: startPage,) : AthkarScreen(keys: name),
+              builder: (context) => isSurah
+                  ? SurahContent(startPage: startPage, surahName: name)
+                  : AthkarScreen(keys: name),
             ),
           );
         },
@@ -49,7 +50,7 @@ class Surah_list_item extends StatelessWidget {
                 width: 335,
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF6F1EB),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(12), // optional
                   boxShadow: [
                     BoxShadow(

@@ -6,6 +6,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Opening",
     "numberOfAyahs": 7,
     "revelationType": "مكية",
+    "startPage": 1,
+
   },
   {
     "number": 2,
@@ -14,6 +16,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Cow",
     "numberOfAyahs": 286,
     "revelationType": "مدنية",
+    "startPage": 2,
+
   },
   {
     "number": 3,
@@ -22,6 +26,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Family of Imraan",
     "numberOfAyahs": 200,
     "revelationType": "مدنية",
+    "startPage": 50,
+
   },
   {
     "number": 4,
@@ -30,6 +36,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Women",
     "numberOfAyahs": 176,
     "revelationType": "مدنية",
+    "startPage": 77,
+
   },
   {
     "number": 5,
@@ -38,6 +46,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Table",
     "numberOfAyahs": 120,
     "revelationType": "مدنية",
+    "startPage": 106,
+
   },
   {
     "number": 6,
@@ -46,6 +56,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Cattle",
     "numberOfAyahs": 165,
     "revelationType": "مكية",
+    "startPage": 128,
+
   },
   {
     "number": 7,
@@ -54,6 +66,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Heights",
     "numberOfAyahs": 206,
     "revelationType": "مكية",
+    "startPage": 151,
+
   },
   {
     "number": 8,
@@ -62,6 +76,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Spoils of War",
     "numberOfAyahs": 75,
     "revelationType": "مدنية",
+    "startPage": 177,
+
   },
   {
     "number": 9,
@@ -70,6 +86,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Repentance",
     "numberOfAyahs": 129,
     "revelationType": "مدنية",
+    "startPage": 187,
+
   },
   {
     "number": 10,
@@ -78,6 +96,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Jonas",
     "numberOfAyahs": 109,
     "revelationType": "مكية",
+    "startPage": 208,
+
   },
   {
     "number": 11,
@@ -86,6 +106,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Hud",
     "numberOfAyahs": 123,
     "revelationType": "مكية",
+    "startPage": 221,
+
   },
   {
     "number": 12,
@@ -94,6 +116,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Joseph",
     "numberOfAyahs": 111,
     "revelationType": "مكية",
+    "startPage": 235,
+
   },
   {
     "number": 13,
@@ -102,6 +126,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Thunder",
     "numberOfAyahs": 43,
     "revelationType": "مدنية",
+    "startPage": 249,
+
   },
   {
     "number": 14,
@@ -110,6 +136,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Abraham",
     "numberOfAyahs": 52,
     "revelationType": "مكية",
+    "startPage": 255,
+
   },
   {
     "number": 15,
@@ -118,6 +146,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Rock",
     "numberOfAyahs": 99,
     "revelationType": "مكية",
+    "startPage": 262,
+
   },
   {
     "number": 16,
@@ -126,6 +156,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Bee",
     "numberOfAyahs": 128,
     "revelationType": "مكية",
+    "startPage": 267,
+
   },
   {
     "number": 17,
@@ -134,6 +166,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Night Journey",
     "numberOfAyahs": 111,
     "revelationType": "مكية",
+    "startPage": 282,
+
   },
   {
     "number": 18,
@@ -142,6 +176,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Cave",
     "numberOfAyahs": 110,
     "revelationType": "مكية",
+    "startPage": 293,
+
   },
   {
     "number": 19,
@@ -150,6 +186,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Mary",
     "numberOfAyahs": 98,
     "revelationType": "مكية",
+    "startPage": 305,
+
   },
   {
     "number": 20,
@@ -158,6 +196,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Taa-Haa",
     "numberOfAyahs": 135,
     "revelationType": "مكية",
+    "startPage": 312,
+
   },
   {
     "number": 21,
@@ -166,6 +206,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Prophets",
     "numberOfAyahs": 112,
     "revelationType": "مكية",
+    "startPage": 322,
+
   },
   {
     "number": 22,
@@ -174,6 +216,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Pilgrimage",
     "numberOfAyahs": 78,
     "revelationType": "مدنية",
+    "startPage": 332,
+
   },
   {
     "number": 23,
@@ -182,6 +226,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Believers",
     "numberOfAyahs": 118,
     "revelationType": "مكية",
+    "startPage": 342,
+
   },
   {
     "number": 24,
@@ -190,6 +236,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Light",
     "numberOfAyahs": 64,
     "revelationType": "مدنية",
+    "startPage": 350,
+
   },
   {
     "number": 25,
@@ -198,6 +246,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Criterion",
     "numberOfAyahs": 77,
     "revelationType": "مكية",
+    "startPage": 359,
+
   },
   {
     "number": 26,
@@ -206,6 +256,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Poets",
     "numberOfAyahs": 227,
     "revelationType": "مكية",
+    "startPage": 367,
+
   },
   {
     "number": 27,
@@ -214,6 +266,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Ant",
     "numberOfAyahs": 93,
     "revelationType": "مكية",
+    "startPage": 377,
+
   },
   {
     "number": 28,
@@ -222,6 +276,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Stories",
     "numberOfAyahs": 88,
     "revelationType": "مكية",
+    "startPage": 385,
+
   },
   {
     "number": 29,
@@ -230,6 +286,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Spider",
     "numberOfAyahs": 69,
     "revelationType": "مكية",
+    "startPage": 396,
+
   },
   {
     "number": 30,
@@ -238,6 +296,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Romans",
     "numberOfAyahs": 60,
     "revelationType": "مكية",
+    "startPage": 404,
+
   },
   {
     "number": 31,
@@ -246,6 +306,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Luqman",
     "numberOfAyahs": 34,
     "revelationType": "مكية",
+    "startPage": 411,
+
   },
   {
     "number": 32,
@@ -254,6 +316,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Prostration",
     "numberOfAyahs": 30,
     "revelationType": "مكية",
+    "startPage": 415,
+
   },
   {
     "number": 33,
@@ -262,6 +326,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Clans",
     "numberOfAyahs": 73,
     "revelationType": "مدنية",
+    "startPage": 418,
+
   },
   {
     "number": 34,
@@ -270,6 +336,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Sheba",
     "numberOfAyahs": 54,
     "revelationType": "مكية",
+    "startPage": 428,
+
   },
   {
     "number": 35,
@@ -278,6 +346,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Originator",
     "numberOfAyahs": 45,
     "revelationType": "مكية",
+    "startPage": 434,
+
   },
   {
     "number": 36,
@@ -286,6 +356,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Yaseen",
     "numberOfAyahs": 83,
     "revelationType": "مكية",
+    "startPage": 440,
+
   },
   {
     "number": 37,
@@ -294,6 +366,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Those drawn up in Ranks",
     "numberOfAyahs": 182,
     "revelationType": "مكية",
+    "startPage": 446,
+
   },
   {
     "number": 38,
@@ -302,6 +376,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The letter Saad",
     "numberOfAyahs": 88,
     "revelationType": "مكية",
+    "startPage": 453,
+
   },
   {
     "number": 39,
@@ -310,6 +386,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Groups",
     "numberOfAyahs": 75,
     "revelationType": "مكية",
+    "startPage": 458,
+
   },
   {
     "number": 40,
@@ -318,6 +396,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Forgiver",
     "numberOfAyahs": 85,
     "revelationType": "مكية",
+    "startPage": 467,
+
   },
   {
     "number": 41,
@@ -326,6 +406,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Explained in detail",
     "numberOfAyahs": 54,
     "revelationType": "مكية",
+    "startPage": 477,
+
   },
   {
     "number": 42,
@@ -334,6 +416,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Consultation",
     "numberOfAyahs": 53,
     "revelationType": "مكية",
+    "startPage": 482,
+
   },
   {
     "number": 43,
@@ -342,6 +426,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Ornaments of gold",
     "numberOfAyahs": 89,
     "revelationType": "مكية",
+    "startPage": 489,
+
   },
   {
     "number": 44,
@@ -350,6 +436,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Smoke",
     "numberOfAyahs": 59,
     "revelationType": "مكية",
+    "startPage": 496,
+
   },
   {
     "number": 45,
@@ -358,6 +446,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Crouching",
     "numberOfAyahs": 37,
     "revelationType": "مكية",
+    "startPage": 499,
+
   },
   {
     "number": 46,
@@ -366,6 +456,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Dunes",
     "numberOfAyahs": 35,
     "revelationType": "مكية",
+    "startPage": 502,
+
   },
   {
     "number": 47,
@@ -374,6 +466,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Muhammad",
     "numberOfAyahs": 38,
     "revelationType": "مدنية",
+    "startPage": 507,
+
   },
   {
     "number": 48,
@@ -382,6 +476,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Victory",
     "numberOfAyahs": 29,
     "revelationType": "مدنية",
+    "startPage": 511,
+
   },
   {
     "number": 49,
@@ -390,6 +486,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Inner Apartments",
     "numberOfAyahs": 18,
     "revelationType": "مدنية",
+    "startPage": 515,
+
   },
   {
     "number": 50,
@@ -398,6 +496,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The letter Qaaf",
     "numberOfAyahs": 45,
     "revelationType": "مكية",
+    "startPage": 518,
+
   },
   {
     "number": 51,
@@ -406,6 +506,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Winnowing Winds",
     "numberOfAyahs": 60,
     "revelationType": "مكية",
+    "startPage": 520,
+
   },
   {
     "number": 52,
@@ -414,6 +516,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Mount",
     "numberOfAyahs": 49,
     "revelationType": "مكية",
+    "startPage": 523,
+
   },
   {
     "number": 53,
@@ -422,6 +526,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Star",
     "numberOfAyahs": 62,
     "revelationType": "مكية",
+    "startPage": 526,
+
   },
   {
     "number": 54,
@@ -430,6 +536,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Moon",
     "numberOfAyahs": 55,
     "revelationType": "مكية",
+    "startPage": 528,
+
   },
   {
     "number": 55,
@@ -438,6 +546,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Beneficent",
     "numberOfAyahs": 78,
     "revelationType": "مدنية",
+    "startPage": 531,
+
   },
   {
     "number": 56,
@@ -446,6 +556,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Inevitable",
     "numberOfAyahs": 96,
     "revelationType": "مكية",
+    "startPage": 534,
+
   },
   {
     "number": 57,
@@ -454,6 +566,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Iron",
     "numberOfAyahs": 29,
     "revelationType": "مدنية",
+    "startPage": 537,
+
   },
   {
     "number": 58,
@@ -462,6 +576,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Pleading Woman",
     "numberOfAyahs": 22,
     "revelationType": "مدنية",
+    "startPage": 542,
+
   },
   {
     "number": 59,
@@ -470,6 +586,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Exile",
     "numberOfAyahs": 24,
     "revelationType": "مدنية",
+    "startPage": 545,
+
   },
   {
     "number": 60,
@@ -478,6 +596,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "She that is to be examined",
     "numberOfAyahs": 13,
     "revelationType": "مدنية",
+    "startPage": 549,
+
   },
   {
     "number": 61,
@@ -486,6 +606,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Ranks",
     "numberOfAyahs": 14,
     "revelationType": "مدنية",
+    "startPage": 551,
+
   },
   {
     "number": 62,
@@ -494,6 +616,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Friday",
     "numberOfAyahs": 11,
     "revelationType": "مدنية",
+    "startPage": 553,
+
   },
   {
     "number": 63,
@@ -502,6 +626,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Hypocrites",
     "numberOfAyahs": 11,
     "revelationType": "مدنية",
+    "startPage": 554,
+
   },
   {
     "number": 64,
@@ -510,6 +636,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Mutual Disillusion",
     "numberOfAyahs": 18,
     "revelationType": "مدنية",
+    "startPage": 556,
+
   },
   {
     "number": 65,
@@ -518,6 +646,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Divorce",
     "numberOfAyahs": 12,
     "revelationType": "مدنية",
+    "startPage": 558,
+
   },
   {
     "number": 66,
@@ -526,6 +656,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Prohibition",
     "numberOfAyahs": 12,
     "revelationType": "مدنية",
+    "startPage": 560,
+
   },
   {
     "number": 67,
@@ -534,6 +666,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Sovereignty",
     "numberOfAyahs": 30,
     "revelationType": "مكية",
+    "startPage": 562,
+
   },
   {
     "number": 68,
@@ -542,6 +676,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Pen",
     "numberOfAyahs": 52,
     "revelationType": "مكية",
+    "startPage": 564,
+
   },
   {
     "number": 69,
@@ -550,6 +686,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Reality",
     "numberOfAyahs": 52,
     "revelationType": "مكية",
+    "startPage": 566,
+
   },
   {
     "number": 70,
@@ -558,6 +696,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Ascending Stairways",
     "numberOfAyahs": 44,
     "revelationType": "مكية",
+    "startPage": 568,
+
   },
   {
     "number": 71,
@@ -566,6 +706,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Noah",
     "numberOfAyahs": 28,
     "revelationType": "مكية",
+    "startPage": 570,
+
   },
   {
     "number": 72,
@@ -574,6 +716,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Jinn",
     "numberOfAyahs": 28,
     "revelationType": "مكية",
+    "startPage": 572,
+
   },
   {
     "number": 73,
@@ -582,6 +726,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Enshrouded One",
     "numberOfAyahs": 20,
     "revelationType": "مكية",
+    "startPage": 574,
+
   },
   {
     "number": 74,
@@ -590,6 +736,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Cloaked One",
     "numberOfAyahs": 56,
     "revelationType": "مكية",
+    "startPage": 575,
+
   },
   {
     "number": 75,
@@ -598,6 +746,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Resurrection",
     "numberOfAyahs": 40,
     "revelationType": "مكية",
+    "startPage": 577,
+
   },
   {
     "number": 76,
@@ -606,6 +756,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Man",
     "numberOfAyahs": 31,
     "revelationType": "مدنية",
+    "startPage": 578,
+
   },
   {
     "number": 77,
@@ -614,6 +766,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Emissaries",
     "numberOfAyahs": 50,
     "revelationType": "مكية",
+    "startPage": 580,
+
   },
   {
     "number": 78,
@@ -622,6 +776,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Announcement",
     "numberOfAyahs": 40,
     "revelationType": "مكية",
+    "startPage": 582,
+
   },
   {
     "number": 79,
@@ -630,6 +786,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Those who drag forth",
     "numberOfAyahs": 46,
     "revelationType": "مكية",
+    "startPage": 583,
+
   },
   {
     "number": 80,
@@ -638,6 +796,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "He frowned",
     "numberOfAyahs": 42,
     "revelationType": "مكية",
+    "startPage": 585,
+
   },
   {
     "number": 81,
@@ -646,6 +806,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Overthrowing",
     "numberOfAyahs": 29,
     "revelationType": "مكية",
+    "startPage": 586,
+
   },
   {
     "number": 82,
@@ -654,6 +816,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Cleaving",
     "numberOfAyahs": 19,
     "revelationType": "مكية",
+    "startPage": 587,
+
   },
   {
     "number": 83,
@@ -662,6 +826,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Defrauding",
     "numberOfAyahs": 36,
     "revelationType": "مكية",
+    "startPage": 587,
+
   },
   {
     "number": 84,
@@ -670,6 +836,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Splitting Open",
     "numberOfAyahs": 25,
     "revelationType": "مكية",
+    "startPage": 589,
+
   },
   {
     "number": 85,
@@ -678,6 +846,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Constellations",
     "numberOfAyahs": 22,
     "revelationType": "مكية",
+    "startPage": 590,
+
   },
   {
     "number": 86,
@@ -686,6 +856,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Morning Star",
     "numberOfAyahs": 17,
     "revelationType": "مكية",
+    "startPage": 591,
+
   },
   {
     "number": 87,
@@ -694,6 +866,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Most High",
     "numberOfAyahs": 19,
     "revelationType": "مكية",
+    "startPage": 591,
+
   },
   {
     "number": 88,
@@ -702,6 +876,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Overwhelming",
     "numberOfAyahs": 26,
     "revelationType": "مكية",
+    "startPage": 592,
+
   },
   {
     "number": 89,
@@ -710,6 +886,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Dawn",
     "numberOfAyahs": 30,
     "revelationType": "مكية",
+    "startPage": 593,
+
   },
   {
     "number": 90,
@@ -718,6 +896,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The City",
     "numberOfAyahs": 20,
     "revelationType": "مكية",
+    "startPage": 594,
+
   },
   {
     "number": 91,
@@ -726,6 +906,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Sun",
     "numberOfAyahs": 15,
     "revelationType": "مكية",
+    "startPage": 595,
+
   },
   {
     "number": 92,
@@ -734,6 +916,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Night",
     "numberOfAyahs": 21,
     "revelationType": "مكية",
+    "startPage": 595,
+
   },
   {
     "number": 93,
@@ -742,6 +926,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Morning Hours",
     "numberOfAyahs": 11,
     "revelationType": "مكية",
+    "startPage": 596,
+
   },
   {
     "number": 94,
@@ -750,6 +936,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Consolation",
     "numberOfAyahs": 8,
     "revelationType": "مكية",
+    "startPage": 596,
+
   },
   {
     "number": 95,
@@ -758,6 +946,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Fig",
     "numberOfAyahs": 8,
     "revelationType": "مكية",
+    "startPage": 597,
+
   },
   {
     "number": 96,
@@ -766,6 +956,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Clot",
     "numberOfAyahs": 19,
     "revelationType": "مكية",
+    "startPage": 597,
+
   },
   {
     "number": 97,
@@ -774,6 +966,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Power, Fate",
     "numberOfAyahs": 5,
     "revelationType": "مكية",
+    "startPage": 598,
+
   },
   {
     "number": 98,
@@ -782,6 +976,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Evidence",
     "numberOfAyahs": 8,
     "revelationType": "مدنية",
+    "startPage": 598,
+
   },
   {
     "number": 99,
@@ -790,6 +986,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Earthquake",
     "numberOfAyahs": 8,
     "revelationType": "مدنية",
+    "startPage": 599,
+
   },
   {
     "number": 100,
@@ -798,6 +996,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Chargers",
     "numberOfAyahs": 11,
     "revelationType": "مكية",
+    "startPage": 599,
+
   },
   {
     "number": 101,
@@ -806,6 +1006,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Calamity",
     "numberOfAyahs": 11,
     "revelationType": "مكية",
+    "startPage": 600,
+
   },
   {
     "number": 102,
@@ -814,6 +1016,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Competition",
     "numberOfAyahs": 8,
     "revelationType": "مكية",
+    "startPage": 600,
+
   },
   {
     "number": 103,
@@ -822,6 +1026,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Declining Day, Epoch",
     "numberOfAyahs": 3,
     "revelationType": "مكية",
+    "startPage": 601,
+
   },
   {
     "number": 104,
@@ -830,6 +1036,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Traducer",
     "numberOfAyahs": 9,
     "revelationType": "مكية",
+    "startPage": 601,
+
   },
   {
     "number": 105,
@@ -838,6 +1046,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Elephant",
     "numberOfAyahs": 5,
     "revelationType": "مكية",
+    "startPage": 602,
+
   },
   {
     "number": 106,
@@ -846,6 +1056,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Quraysh",
     "numberOfAyahs": 4,
     "revelationType": "مكية",
+    "startPage": 602,
+
   },
   {
     "number": 107,
@@ -854,6 +1066,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Almsgiving",
     "numberOfAyahs": 7,
     "revelationType": "مكية",
+    "startPage": 603,
+
   },
   {
     "number": 108,
@@ -862,6 +1076,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Abundance",
     "numberOfAyahs": 3,
     "revelationType": "مكية",
+    "startPage": 603,
+
   },
   {
     "number": 109,
@@ -870,6 +1086,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Disbelievers",
     "numberOfAyahs": 6,
     "revelationType": "مكية",
+    "startPage": 604,
+
   },
   {
     "number": 110,
@@ -878,6 +1096,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Divine Support",
     "numberOfAyahs": 3,
     "revelationType": "مدنية",
+    "startPage": 604,
+
   },
   {
     "number": 111,
@@ -886,6 +1106,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Palm Fibre",
     "numberOfAyahs": 5,
     "revelationType": "مكية",
+    "startPage": 605,
+
   },
   {
     "number": 112,
@@ -894,6 +1116,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Sincerity",
     "numberOfAyahs": 4,
     "revelationType": "مكية",
+    "startPage": 605,
+
   },
   {
     "number": 113,
@@ -902,6 +1126,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "The Dawn",
     "numberOfAyahs": 5,
     "revelationType": "مكية",
+    "startPage": 606,
+
   },
   {
     "number": 114,
@@ -910,6 +1136,8 @@ const List<Map<String, dynamic>> surahsList = [
     "englishNameTranslation": "Mankind",
     "numberOfAyahs": 6,
     "revelationType": "مكية",
+    "startPage": 606,
+
   },
 ];
 
