@@ -157,6 +157,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
+                        key: formState,
                         child: TextFormField(
                           controller: _cityController,
                           textAlign: TextAlign.right,
@@ -182,9 +183,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                           cursorColor: Colors.white,
 
                           decoration: InputDecoration(
-                          
                             border: OutlineInputBorder(
-                              
                               borderRadius: BorderRadius.circular(18),
                             ),
 

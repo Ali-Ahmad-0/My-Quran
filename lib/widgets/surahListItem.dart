@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quran/constants/colors.dart'
-    show kbackgroundColor, kbuttonColor, ksecondtextColor, ktextColor;
+    show
+        kbackgroundColor,
+        kbuttonColor,
+        ksecondaryBackgroundColor,
+        ksecondtextColor,
+        ktextColor,
+        kdarkColor;
 import 'package:quran/views/athkar_screen.dart';
 import 'package:quran/views/ayahs_screen.dart';
 import 'package:quran/views/surah_content.dart';
 
 class Surah_list_item extends StatelessWidget {
   String name, revType, nOfSurahs, number;
-  bool isSurah;
+  bool isSurah, isDark;
   int startPage;
   Surah_list_item(
+    this.isDark,
     this.startPage,
     this.nOfSurahs,
     this.name,
@@ -30,7 +37,7 @@ class Surah_list_item extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => isSurah
                   ? SurahContent(startPage: startPage, surahName: name)
-                  : AthkarScreen(keys: name),
+                  : AthkarScreen(keys: name, isDark: isDark),
             ),
           );
         },
@@ -43,7 +50,7 @@ class Surah_list_item extends StatelessWidget {
                 width: 7,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: kbackgroundColor,
+                  color: isDark ? Colors.grey : kbackgroundColor,
                 ),
               ),
               SizedBox(width: 10),
@@ -51,23 +58,34 @@ class Surah_list_item extends StatelessWidget {
                 width: 335,
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: isDark
+                      ? kdarkColor // match home screen dark background
+                      : ksecondaryBackgroundColor, // match home screen light background
                   borderRadius: BorderRadius.circular(12), // optional
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(
-                        0.3,
-                      ), // shadow color with opacity
+                      color: isDark
+                          ? Colors.white.withOpacity(
+                              0.2,
+                            ) // subtle light shadow for dark mode
+                          : Colors.black.withOpacity(
+                              0.3,
+                            ), // subtle dark shadow for light mode
                       spreadRadius: 3, // how much the shadow spreads
                       blurRadius: 8, // how soft the shadow is
-                      offset: Offset(2, 4), // shadow position: x, y
+                      offset: Offset(1, 4), // shadow position: x, y
                     ),
                   ],
                 ),
                 child: ListTile(
                   leading: isSurah
-                      ? Leading(number: number)
-                      : Icon(Icons.arrow_back_ios_outlined),
+                      ? Leading(number: number, isDark: isDark)
+                      : Icon(
+                          Icons.arrow_back_ios_outlined,
+                          color: isDark
+                              ? ksecondaryBackgroundColor
+                              : ktextColor,
+                        ),
                   title: Container(
                     width: 10,
                     child: Text(
@@ -75,6 +93,7 @@ class Surah_list_item extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
+                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
                       ),
                     ),
                   ),
@@ -84,6 +103,9 @@ class Surah_list_item extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
+                            color: isDark
+                                ? ksecondaryBackgroundColor
+                                : ktextColor,
                           ),
                         )
                       : SizedBox(),
@@ -92,7 +114,7 @@ class Surah_list_item extends StatelessWidget {
                     child: Text(
                       '$name',
                       style: TextStyle(
-                        color: ktextColor,
+                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Amiri',
@@ -110,7 +132,8 @@ class Surah_list_item extends StatelessWidget {
 }
 
 class Leading extends StatelessWidget {
-  const Leading({super.key, required this.number});
+  final bool isDark;
+  const Leading({super.key, required this.number, required this.isDark});
 
   final String number;
 
@@ -134,6 +157,7 @@ class Leading extends StatelessWidget {
               fontSize: 16, // Adjust as needed
               fontWeight: FontWeight.bold,
               fontFamily: 'Poppins',
+              color: isDark ? ksecondaryBackgroundColor : ktextColor,
             ),
           ),
         ],
