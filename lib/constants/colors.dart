@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
 Color ktextColor = Color(0xFF1C1C1C);
-Color kbuttonColor = Color(0xFF004643);
-Color ksecondtextColor = Color(0xffA8A8A8);
+Color kdarkColor = Color(0xff141E1F);
+Color kbackgroundColor = Color(0xFF004643);
+Color ksecondaryBackgroundColor = Color.fromARGB(255, 255, 255, 255);

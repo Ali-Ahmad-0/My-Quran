@@ -27,7 +27,7 @@ class StartScreen extends StatelessWidget {
           Text(
             'Read the Quran easily',
             style: TextStyle(
-              color: ksecondtextColor,
+              color: ktextColor,
               fontSize: 15,
               fontWeight: FontWeight.bold,
               fontFamily: 'Poppins',
@@ -45,7 +45,7 @@ class StartScreen extends StatelessWidget {
               height: 53,
               width: 180,
               decoration: BoxDecoration(
-                color: kbuttonColor,
+                color: kdarkColor,
                 borderRadius: BorderRadius.circular(24),
               ),
               child: Center(

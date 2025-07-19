@@ -23,10 +23,13 @@ class SurahContent extends StatelessWidget {
           return ListView(
             padding: EdgeInsets.zero,
             children: [
-              Image.asset(
-                'Assets/quran_image/${pageImagePath[index]}',
-                fit: BoxFit.fill,
-                height: portraitHeight,
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Image.asset(
+                  'Assets/quran_image/${pageImagePath[index]}',
+                  fit: BoxFit.fill,
+                  height: portraitHeight,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

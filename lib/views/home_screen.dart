@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kdarkColor,
       body: Column(
         children: [
           SizedBox(height: 10),
@@ -76,15 +77,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       'My Quran',
                       style: TextStyle(
                         fontSize: 30,
-                        color: kbuttonColor,
+                        color: ksecondaryBackgroundColor,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'poppins',
                       ),
                     ),
                     SizedBox(height: 5),
-                    // Text(
-                    //   'Read the Quran easily',
-                    //   style: TextStyle(fontSize: 15, fontFamily: 'Poppins'),
-                    // ),
+
                     SizedBox(height: 5),
                     Text(
                       '$currentTime',
@@ -92,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppins',
+                        color: ksecondaryBackgroundColor,
                       ),
                     ),
                     SizedBox(height: 5),
@@ -102,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppins',
+                        color: ksecondaryBackgroundColor,
                       ),
                     ),
                     SizedBox(height: 5),
@@ -111,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppins',
+                        color: ksecondaryBackgroundColor,
                       ),
                     ),
                     SizedBox(height: 5),
@@ -125,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: kbuttonColor,
+                          color: kbackgroundColor,
                           borderRadius: BorderRadiusDirectional.circular(7),
                         ),
 
@@ -140,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text(
                               'مواقيت الصلاة',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ksecondaryBackgroundColor,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'poppins',
@@ -155,8 +157,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Image.asset(
                   (dt.hour > 19 || dt.hour < 5)
-                      ? 'Assets/images/image 4.png'
-                      : 'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png',
+                      ? 'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png'
+                      : 'Assets/images/image 4.png',
                   height: 200,
                   width: 200,
                 ),
@@ -182,15 +184,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 35,
                       width: 75,
                       decoration: BoxDecoration(
-                        border: Border.all(color: kbuttonColor, width: 1),
-                        color: isSelected ? kbuttonColor : Colors.white,
+                        border: Border.all(color: kbackgroundColor, width: 1),
+                        color: isSelected
+                            ? ksecondaryBackgroundColor
+                            : kdarkColor,
                         borderRadius: BorderRadiusDirectional.circular(20),
                       ),
                       child: Center(
                         child: Text(
                           'السور',
                           style: TextStyle(
-                            color: isSelected ? Colors.white : kbuttonColor,
+                            color: isSelected
+                                ? kdarkColor
+                                : ksecondaryBackgroundColor,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'amiri',
                           ),
@@ -211,15 +217,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 35,
                     width: 75,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 1),
-                      color: isSelected ? Colors.white : kbuttonColor,
+                      border: Border.all(color: kbackgroundColor, width: 1),
+                      color: isSelected
+                          ? kdarkColor
+                          : ksecondaryBackgroundColor,
                       borderRadius: BorderRadiusDirectional.circular(20),
                     ),
                     child: Center(
                       child: Text(
                         'الاذكار',
                         style: TextStyle(
-                          color: isSelected ? kbuttonColor : Colors.white,
+                          color: isSelected
+                              ? ksecondaryBackgroundColor
+                              : kdarkColor,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'amiri',
                         ),

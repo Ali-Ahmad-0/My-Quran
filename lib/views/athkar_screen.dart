@@ -10,17 +10,17 @@ class AthkarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kbuttonColor,
+        backgroundColor: ksecondaryBackgroundColor,
         title: Text(
           keys,
           style: TextStyle(
-            color: Colors.white,
+            color: kdarkColor,
             fontSize: 24,
             fontWeight: FontWeight.bold,
             fontFamily: 'Amiri', // or 'Poppins', or remove for default
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.white), // for back button color
+        iconTheme: IconThemeData(color: kdarkColor), // for back button color
         elevation: 0, // flat look, optional
       ),
       body: Expanded(
@@ -35,7 +35,7 @@ class AthkarScreen extends StatelessWidget {
                     leading: Text(
                       'التكرار : ${athkarMap[keys]![index]['counter']} ',
                       style: TextStyle(
-                        color: kbuttonColor,
+                        color: kdarkColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Poppins',

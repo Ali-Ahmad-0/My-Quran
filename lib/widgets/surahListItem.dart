@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quran/constants/colors.dart' show kbuttonColor, ktextColor;
+import 'package:quran/constants/colors.dart'
+    show kbackgroundColor, kbuttonColor, ksecondtextColor, ktextColor;
 import 'package:quran/views/athkar_screen.dart';
 import 'package:quran/views/ayahs_screen.dart';
 import 'package:quran/views/surah_content.dart';
@@ -42,7 +43,7 @@ class Surah_list_item extends StatelessWidget {
                 width: 7,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: kbuttonColor,
+                  color: kbackgroundColor,
                 ),
               ),
               SizedBox(width: 10),

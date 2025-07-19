@@ -15,16 +15,25 @@ class SalahTimetable extends StatefulWidget {
 class _SalahTimetableState extends State<SalahTimetable> {
   DateTime dt = DateTime.now();
   late PrayerCubit _prayerCubit;
+  late String? city = 'مكة المكرمة';
+  late TextEditingController _cityController;
+  GlobalKey<FormState> formState = GlobalKey();
 
   @override
   void initState() {
     super.initState();
+    _cityController = TextEditingController();
     _prayerCubit = PrayerCubit();
-    _prayerCubit.fetchPrayerTimes('cairo', DateFormat('dd-MM-yyy').format(dt));
+    _prayerCubit.fetchPrayerTimes(
+      city ?? 'مكة المكرمة',
+      DateFormat('dd-MM-yyy').format(dt),
+    );
   }
 
   @override
   void dispose() {
+    _cityController.dispose();
+
     _prayerCubit.close();
     super.dispose();
   }
@@ -45,43 +54,65 @@ class _SalahTimetableState extends State<SalahTimetable> {
               children: [
                 Column(
                   children: [
-                    Image.asset('Assets/images/1789.jpg'),
+                    Image.asset(
+                      'Assets/images/1789.jpg',
+                      fit: BoxFit.fitHeight,
+                    ),
                     Expanded(child: Container(color: Color(0xff141E1F))),
                   ],
                 ),
                 ListView(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 100, width: double.infinity),
-                    Center(
-                      child: Text(
-                        'مواقيت الصلاة',
-                        style: TextStyle(fontSize: 42),
-                      ),
-                    ),
-
-                    Center(
-                      child: Text(
-                        'حسب التوقيت المحلي لمدينة القاهرة',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 32),
+                      child: Center(
+                        child: Text(
+                          'مواقيت الصلاة',
+                          style: TextStyle(fontSize: 42),
                         ),
                       ),
                     ),
-                    SizedBox(height: 50),
+
+                    Padding(
+                      padding: EdgeInsetsGeometry.symmetric(horizontal: 36),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${city ?? "مكة المكرمة"}',
+                              style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.053,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              ' حسب التوقيت المحلي لمدينة',
+                              style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
+
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 80, width: double.infinity),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 32,
+                        horizontal: 60,
+                        vertical: 36,
                       ),
                       child: Container(
-                        height: 50,
-                        width: 280,
+                        height: 42,
+                        width: 250,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadiusDirectional.circular(24),
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadiusDirectional.circular(32),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -91,7 +122,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                                 setState(() {
                                   dt = dt.add(Duration(days: -1));
                                   _prayerCubit.fetchPrayerTimes(
-                                    "cairo",
+                                    city ?? 'مكة المكرمة',
                                     DateFormat('dd-MM-yyyy').format(dt),
                                   );
                                 });
@@ -112,7 +143,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                                 setState(() {
                                   dt = dt.add(Duration(days: 1));
                                   _prayerCubit.fetchPrayerTimes(
-                                    "cairo",
+                                    city ?? 'مكة المكرمة',
                                     DateFormat('dd-MM-yyyy').format(dt),
                                   );
                                 });
@@ -125,71 +156,51 @@ class _SalahTimetableState extends State<SalahTimetable> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: TextFormField(
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.white),
-                        onSaved: (newValue) {
-                          if (newValue != null) {
-                            setState(() {
-                              // dt = DateTime.parse(newValue);
-                              _prayerCubit.fetchPrayerTimes(
-                                newValue,
-                                DateFormat('dd-MM-yyyy').format(dt),
-                              );
-                            });
-                          } else
-                            setState(() {
-                              dt = DateTime.now();
-                              _prayerCubit.fetchPrayerTimes(
-                                "cairo",
-                                DateFormat('dd-MM-yyyy').format(dt),
-                              );
-                            });
-                        },
-                        // controller: TextEditingController(text: dt.toString()),
-                        onChanged: (value) {
-                          if (value != null) {
-                            setState(() {
-                              dt = DateTime.parse(value);
-                              _prayerCubit.fetchPrayerTimes(
-                                value,
-                                DateFormat('dd-MM-yyyy').format(dt),
-                              );
-                            });
-                          } else
-                            setState(() {
-                              dt = DateTime.now();
-                              _prayerCubit.fetchPrayerTimes(
-                                "cairo",
-                                DateFormat('dd-MM-yyyy').format(dt),
-                              );
-                            });
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'من فضلك ادخل مدينة';
-                          }
-                          return null;
-                        },
-                        cursorColor: Colors.white,
+                      child: Form(
+                        child: TextFormField(
+                          controller: _cityController,
+                          textAlign: TextAlign.right,
+                          style: TextStyle(color: Colors.white),
+                          onFieldSubmitted: (value) {
+                            if (formState.currentState!.validate()) {
+                              setState(() {
+                                city = value;
+                                _prayerCubit.fetchPrayerTimes(
+                                  city!,
+                                  DateFormat('dd-MM-yyyy').format(dt),
+                                );
+                              });
+                            }
+                          },
 
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'من فضلك ادخل مدينة';
+                            }
+                            return null;
+                          },
+                          cursorColor: Colors.white,
 
-                          suffixIcon: Icon(
-                            Icons.search,
-                            color: Colors.white,
-                            size: 24,
+                          decoration: InputDecoration(
+                          
+                            border: OutlineInputBorder(
+                              
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+
+                            suffixIcon: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                            labelText: 'ابحث عن مدينة',
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                            focusColor: Colors.white,
+                            fillColor: Colors.white,
                           ),
-                          labelText: 'ابحث عن مدينة',
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                          focusColor: Colors.white,
-                          fillColor: Colors.white,
                         ),
                       ),
                     ),
