@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: isDark ? kdarkColor : ksecondaryBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.only(top: 12),
-        child: Column(
+        child: ListView(
           children: [
             Container(
               height: 300,
@@ -102,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontFamily: 'poppins',
                         ),
                       ),
-                      SizedBox(height: 5),
 
                       SizedBox(height: 5),
                       Text(
@@ -226,8 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   fontSize:
-                                      MediaQuery.of(context).size.width *
-                                      0.0327,
+                                      MediaQuery.of(context).size.width * 0.0327,
                                   fontWeight: FontWeight.bold,
                                   color: isDark
                                       ? ktextColor
@@ -375,24 +373,24 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: isSurah ? Surahs.length : athkarMap.length,
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: isSurah ? Surahs.length : athkarMap.length,
 
-                itemBuilder: (context, index) {
-                  return Surah_list_item(
-                    isDark,
-                    Surahs[index].startPage!,
-                    isSurah: isSurah,
-                    isSurah ? Surahs[index].numberOfAyahs.toString() : '',
-                    isSurah
-                        ? Surahs[index].name.toString()
-                        : athkarMap.keys.toList()[index].toString(),
-                    isSurah ? Surahs[index].revelationType.toString() : '',
-                    (index + 1).toString(),
-                  );
-                },
-              ),
+              itemBuilder: (context, index) {
+                return Surah_list_item(
+                  isDark,
+                  Surahs[index].startPage!,
+                  isSurah: isSurah,
+                  isSurah ? Surahs[index].numberOfAyahs.toString() : '',
+                  isSurah
+                      ? Surahs[index].name.toString()
+                      : athkarMap.keys.toList()[index].toString(),
+                  isSurah ? Surahs[index].revelationType.toString() : '',
+                  (index + 1).toString(),
+                );
+              },
             ),
           ],
         ),

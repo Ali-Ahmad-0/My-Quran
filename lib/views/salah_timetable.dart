@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:quran/cubit/prayer_cubit.dart';
 import 'package:quran/models/prayer_day.dart';
 import 'package:quran/widgets/prayer_table.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class SalahTimetable extends StatefulWidget {
@@ -19,16 +20,21 @@ class _SalahTimetableState extends State<SalahTimetable> {
   late String? city = 'مكة المكرمة';
   late TextEditingController _cityController;
   GlobalKey<FormState> formState = GlobalKey();
+  Future<void> _getCity() async {
+    final prfs = await SharedPreferences.getInstance();
+    String? savedCity = prfs.getString('CityName');
+    setState(() {
+      city = savedCity ?? 'مكة المكرمة';
+    });
+    _prayerCubit.fetchPrayerTimes(city!, DateFormat('dd-MM-yyyy').format(dt));
+  }
 
   @override
   void initState() {
     super.initState();
     _cityController = TextEditingController();
     _prayerCubit = PrayerCubit();
-    _prayerCubit.fetchPrayerTimes(
-      city ?? 'مكة المكرمة',
-      DateFormat('dd-MM-yyy').format(dt),
-    );
+    _getCity();
   }
 
   @override
@@ -102,7 +108,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 80, width: double.infinity),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.13),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 60,
@@ -163,9 +169,12 @@ class _SalahTimetableState extends State<SalahTimetable> {
                           controller: _cityController,
                           textAlign: TextAlign.right,
                           style: TextStyle(color: Colors.white),
-                          onFieldSubmitted: (value) {
+                          onFieldSubmitted: (value) async {
                             if (formState.currentState!.validate()) {
-                              setState(() {
+                              final prfs =
+                                  await SharedPreferences.getInstance();
+                              await prfs.setString('CityName', value);
+                              setState(() async {
                                 city = value;
                                 _prayerCubit.fetchPrayerTimes(
                                   city!,
