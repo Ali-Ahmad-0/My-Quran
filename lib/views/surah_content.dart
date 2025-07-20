@@ -5,7 +5,13 @@ import 'package:quran/constants/lists.dart';
 class SurahContent extends StatelessWidget {
   final int startPage;
   final String surahName;
-  SurahContent({super.key, required this.startPage, required this.surahName});
+  final bool isDark;
+  SurahContent({
+    super.key,
+    required this.startPage,
+    required this.surahName,
+    required this.isDark,
+  });
   @override
   Widget build(BuildContext context) {
     PageController _pageController = PageController(initialPage: startPage - 1);
@@ -15,6 +21,7 @@ class SurahContent extends StatelessWidget {
         ? screenSize.height * 0.95
         : screenSize.height * 3;
     return Scaffold(
+      backgroundColor: isDark ? ktextColor : ksecondaryBackgroundColor,
       body: PageView.builder(
         controller: _pageController ?? PageController(initialPage: 0),
         reverse: true,
@@ -25,11 +32,25 @@ class SurahContent extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Image.asset(
-                  'Assets/quran_image/${pageImagePath[index]}',
-                  fit: BoxFit.fill,
-                  height: portraitHeight,
-                ),
+                child: isDark
+                    ? ColorFiltered(
+                        colorFilter: const ColorFilter.matrix(<double>[
+                          -1, 0, 0, 0, 255, // Red
+                          0, -1, 0, 0, 255, // Green
+                          0, 0, -1, 0, 255, // Blue
+                          0, 0, 0, 1, 0, // Alpha
+                        ]),
+                        child: Image.asset(
+                          'Assets/quran_image/${pageImagePath[index]}',
+                          fit: BoxFit.fill,
+                          height: portraitHeight,
+                        ),
+                      )
+                    : Image.asset(
+                        'Assets/quran_image/${pageImagePath[index]}',
+                        fit: BoxFit.fill,
+                        height: portraitHeight,
+                      ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -42,7 +63,7 @@ class SurahContent extends StatelessWidget {
                         fontFamily: 'amiri',
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: ktextColor,
+                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
                       ),
                     ),
                     Text(
@@ -51,7 +72,7 @@ class SurahContent extends StatelessWidget {
                         fontFamily: 'amiri',
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: ktextColor,
+                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
                       ),
                     ),
                   ],

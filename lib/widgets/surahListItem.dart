@@ -37,7 +37,11 @@ class Surah_list_item extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => isSurah
-                  ? SurahContent(startPage: startPage, surahName: name)
+                  ? SurahContent(
+                      startPage: startPage,
+                      surahName: name,
+                      isDark: isDark,
+                    )
                   : AthkarScreen(keys: name, isDark: isDark),
             ),
           );
