@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {},
                         child: Container(
                           height: 70,
-                          width: 160,
+                          width: MediaQuery.of(context).size.width * 0.444,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: isDark
@@ -200,6 +200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: Center(
                             child: ListTile(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
                               leading: Icon(
                                 Icons.arrow_back_ios,
                                 color: isDark
@@ -208,13 +211,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               title: Text(
                                 'قرأتها مؤخرا ',
+                                textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: isDark
-                                      ? kdarkColor
+                                      ? ktextColor
                                       : ksecondaryBackgroundColor,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'times',
                                   fontSize: 15,
+                                ),
+                              ),
+                              subtitle: Text(
+                                'سورة البقرة - ص 2',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width *
+                                      0.0327,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDark
+                                      ? ktextColor
+                                      : ksecondaryBackgroundColor,
                                 ),
                               ),
                             ),
