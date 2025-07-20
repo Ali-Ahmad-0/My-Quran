@@ -111,7 +111,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                         height: 42,
                         width: 250,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withOpacity(0.9),
                           borderRadius: BorderRadiusDirectional.circular(32),
                         ),
                         child: Row(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quran/views/home_screen.dart';
-import 'package:quran/views/start_screen.dart';
 
 void main() {
   runApp(const MyApp());

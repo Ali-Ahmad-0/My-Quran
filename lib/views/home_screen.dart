@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
-import 'package:quran/models/prayer_day.dart';
 import 'package:quran/models/surah_model.dart';
 import 'package:quran/views/salah_timetable.dart';
 import 'package:quran/widgets/surahListItem.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -20,13 +20,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Timer timer;
   late String currentTime;
+  bool isDark = false;
 
   HijriCalendar hejri = HijriCalendar.now();
 
   DateTime dt = DateTime.now();
   bool isSelected = true;
   bool isSurah = true;
-  bool isDark = true;
+  Future<void> _getIsDark() async {
+    final prfs = await SharedPreferences.getInstance();
+    setState(() {
+      isDark = prfs.getBool('isDark') ?? false;
+    });
+  }
+
+  Future<bool> _setDarkMode() async {
+    final prfs = await SharedPreferences.getInstance();
+    setState(() {
+      isDark = !isDark;
+    });
+    return prfs.setBool('isDark', isDark);
+  }
 
   @override
   void initState() {
@@ -37,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         currentTime = _getCurrentTime();
       });
     });
+    _getIsDark();
   }
 
   List<Surah_item> Surahs = surahsList
@@ -66,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 280,
+              height: 300,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
@@ -163,13 +178,54 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+
                       SizedBox(height: 10),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        onTap: () {},
+                        child: Container(
+                          height: 70,
+                          width: 160,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isDark
+                                  ? ksecondaryBackgroundColor
+                                  : kdarkColor,
+                              width: 1,
+                            ),
+                            color: isDark
+                                ? ksecondaryBackgroundColor
+                                : kdarkColor,
+                            borderRadius: BorderRadiusDirectional.circular(20),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.arrow_back_ios,
+                                color: isDark
+                                    ? kdarkColor
+                                    : ksecondaryBackgroundColor,
+                              ),
+                              title: Text(
+                                'قرأتها مؤخرا ',
+                                style: TextStyle(
+                                  color: isDark
+                                      ? kdarkColor
+                                      : ksecondaryBackgroundColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'times',
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      SizedBox(height: 12),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Padding(
@@ -182,11 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? ksecondaryBackgroundColor
                                   : kdarkColor,
                             ),
-                            onPressed: () {
-                              setState(() {
-                                isDark = !isDark;
-                              });
-                            },
+                            onPressed: _setDarkMode,
                           ),
                         ),
                       ),
@@ -202,6 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Row(
@@ -230,11 +283,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: isSelected
                               ? isDark
                                     ? ksecondaryBackgroundColor
-                                    : kdarkColor
+                                    : kbackgroundColor
                               : isDark
                               ? kdarkColor
                               : ksecondaryBackgroundColor,
-                          borderRadius: BorderRadiusDirectional.circular(20),
+                          borderRadius: BorderRadiusDirectional.circular(16),
                         ),
                         child: Center(
                           child: Text(
@@ -279,8 +332,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : ksecondaryBackgroundColor
                             : isDark
                             ? ksecondaryBackgroundColor
-                            : kdarkColor,
-                        borderRadius: BorderRadiusDirectional.circular(20),
+                            : kbackgroundColor,
+                        borderRadius: BorderRadiusDirectional.circular(16),
                       ),
                       child: Center(
                         child: Text(
@@ -303,6 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(

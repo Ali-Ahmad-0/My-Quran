@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart' show Dio, Response;
+import 'package:dio/dio.dart' show Dio;
 import 'package:quran/models/prayer_week.dart';
 
 class GetPrayerTimesService {
@@ -11,16 +9,14 @@ class GetPrayerTimesService {
 
     try {
       final response = await _dio.get(url);
-      
+
       if (response.statusCode == 200) {
         return PrayerWeek.fromJson(response.data);
-      }
-      else{
+      } else {
         throw Exception('Failed to load prayer times');
       }
-      
     } catch (e) {
-      throw Exception( 'Failed to load prayer times on error: $e');
+      throw Exception('Failed to load prayer times on error: $e');
     }
   }
 }

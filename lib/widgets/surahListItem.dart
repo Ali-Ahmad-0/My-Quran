@@ -11,6 +11,7 @@ import 'package:quran/constants/colors.dart'
 import 'package:quran/views/athkar_screen.dart';
 import 'package:quran/views/ayahs_screen.dart';
 import 'package:quran/views/surah_content.dart';
+import 'package:quran/widgets/item_Leading.dart';
 
 class Surah_list_item extends StatelessWidget {
   String name, revType, nOfSurahs, number;
@@ -66,14 +67,14 @@ class Surah_list_item extends StatelessWidget {
                     BoxShadow(
                       color: isDark
                           ? Colors.white.withOpacity(
-                              0.2,
+                              0.1,
                             ) // subtle light shadow for dark mode
                           : Colors.black.withOpacity(
-                              0.3,
+                              0.5,
                             ), // subtle dark shadow for light mode
-                      spreadRadius: 3, // how much the shadow spreads
-                      blurRadius: 8, // how soft the shadow is
-                      offset: Offset(1, 4), // shadow position: x, y
+                      spreadRadius: 1, // how much the shadow spreads
+                      blurRadius: 10, // how soft the shadow is
+                      offset: Offset(1, 5), // shadow position: x, y
                     ),
                   ],
                 ),
@@ -126,41 +127,6 @@ class Surah_list_item extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class Leading extends StatelessWidget {
-  final bool isDark;
-  const Leading({super.key, required this.number, required this.isDark});
-
-  final String number;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 45, // or whatever size your SVG is
-      height: 45,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          SvgPicture.asset(
-            'Assets/images/muslim (1) 1.svg',
-            height: 45,
-            width: 45,
-            fit: BoxFit.contain,
-          ),
-          Text(
-            '$number',
-            style: TextStyle(
-              fontSize: 16, // Adjust as needed
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Poppins',
-              color: isDark ? ksecondaryBackgroundColor : ktextColor,
-            ),
-          ),
-        ],
       ),
     );
   }
