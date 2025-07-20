@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: isDark
                                 ? ksecondaryBackgroundColor
                                 : kdarkColor,
-                            borderRadius: BorderRadiusDirectional.circular(20),
+                            borderRadius: BorderRadiusDirectional.circular(16),
                           ),
                           child: Center(
                             child: ListTile(

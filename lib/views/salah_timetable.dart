@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:quran/cubit/prayer_cubit.dart';
 import 'package:quran/models/prayer_day.dart';
 import 'package:quran/widgets/prayer_table.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class SalahTimetable extends StatefulWidget {
   SalahTimetable({super.key});
@@ -224,9 +225,17 @@ class _SalahTimetableState extends State<SalahTimetable> {
 
                                 return PrayerTable(prayerDay: currentDay);
                               } else {
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    color: Colors.white,
+                                return Skeletonizer(
+                                  child: PrayerTable(
+                                    prayerDay: PrayerDay(
+                                      date: 'date',
+                                      fajr: 'fajr',
+                                      shurooq: 'shurooq',
+                                      dhuhr: 'dhuhr',
+                                      asr: 'asr',
+                                      maghrib: 'maghrib',
+                                      isha: 'isha',
+                                    ),
                                   ),
                                 );
                               }
