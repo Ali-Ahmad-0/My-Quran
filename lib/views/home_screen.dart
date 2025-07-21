@@ -7,6 +7,8 @@ import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
 import 'package:quran/models/surah_model.dart';
 import 'package:quran/views/salah_timetable.dart';
+import 'package:quran/views/surah_content.dart';
+import 'package:quran/widgets/preyer_times_container.dart';
 import 'package:quran/widgets/surahListItem.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,12 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   late Timer timer;
   late String currentTime;
   bool isDark = false;
-
   HijriCalendar hejri = HijriCalendar.now();
-
   DateTime dt = DateTime.now();
   bool isSelected = true;
   bool isSurah = true;
+  int? latestpagenumber;
+  String? surahName;
+
   Future<void> _getIsDark() async {
     final prfs = await SharedPreferences.getInstance();
     setState(() {
@@ -52,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
     _getIsDark();
+    _getPageNumber();
   }
 
   List<Surah_item> Surahs = surahsList
@@ -66,6 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return '$hours:$minutes:$seconds';
   }
 
+  Future<void> _getPageNumber() async {
+    final prfs = await SharedPreferences.getInstance();
+    latestpagenumber = prfs.getInt('latestPageNumber');
+    surahName = prfs.getString('surahName');
+    setState(() {});
+  }
+
   @override
   void dispose() {
     timer.cancel(); // important to prevent memory leaks
@@ -77,199 +88,151 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: isDark ? kdarkColor : ksecondaryBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 12),
+        padding: const EdgeInsets.only(top: 8, right: 12, left: 12),
         child: ListView(
           children: [
-            Container(
-              height: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                children: [
-                  SizedBox(width: 18),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 20),
-                      Text(
-                        'My Quran',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: isDark
-                              ? ksecondaryBackgroundColor
-                              : kdarkColor,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppins',
-                        ),
-                      ),
-
-                      SizedBox(height: 5),
-                      Text(
-                        '$currentTime',
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppins',
-                          color: isDark
-                              ? ksecondaryBackgroundColor
-                              : kdarkColor,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        hejri.toFormat('dd MMMM yyyy'),
-
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppins',
-                          color: isDark
-                              ? ksecondaryBackgroundColor
-                              : kdarkColor,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        '${dt.day.toString()} -  ${dt.month.toString()} - ${dt.year.toString()}',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppins',
-                          color: isDark
-                              ? ksecondaryBackgroundColor
-                              : kdarkColor,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SalahTimetable(),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kbackgroundColor,
-                            borderRadius: BorderRadiusDirectional.circular(7),
-                          ),
-
-                          height: 35,
-                          width: 160,
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 18,
-                                vertical: 7,
-                              ),
-                              child: Text(
-                                'مواقيت الصلاة',
-                                style: TextStyle(
-                                  color: ksecondaryBackgroundColor,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'poppins',
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 10),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
-                        child: Container(
-                          height: 70,
-                          width: MediaQuery.of(context).size.width * 0.444,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: isDark
-                                  ? ksecondaryBackgroundColor
-                                  : kdarkColor,
-                              width: 1,
-                            ),
-                            color: isDark
-                                ? ksecondaryBackgroundColor
-                                : kdarkColor,
-                            borderRadius: BorderRadiusDirectional.circular(16),
-                          ),
-                          child: Center(
-                            child: ListTile(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                              ),
-                              leading: Icon(
-                                Icons.arrow_back_ios,
-                                color: isDark
-                                    ? kdarkColor
-                                    : ksecondaryBackgroundColor,
-                              ),
-                              title: Text(
-                                'قرأتها مؤخرا ',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: isDark
-                                      ? ktextColor
-                                      : ksecondaryBackgroundColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'times',
-                                  fontSize: 15,
-                                ),
-                              ),
-                              subtitle: Text(
-                                'سورة البقرة - ص 2',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.0327,
-                                  fontWeight: FontWeight.bold,
-                                  color: isDark
-                                      ? ktextColor
-                                      : ksecondaryBackgroundColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'My Quran',
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'poppins',
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: IconButton(
-                            icon: Icon(
-                              isDark ? Icons.light_mode_sharp : Icons.dark_mode,
-                              size: 24,
-                              color: isDark
-                                  ? ksecondaryBackgroundColor
-                                  : kdarkColor,
-                            ),
-                            onPressed: _setDarkMode,
-                          ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    isDark ? Icons.light_mode_sharp : Icons.dark_mode,
+                    size: 24,
+                    color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                  ),
+                  onPressed: _setDarkMode,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20),
+
+                    SizedBox(height: 5),
+                    Text(
+                      '$currentTime',
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'poppins',
+                        color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      hejri.toFormat('dd MMMM yyyy'),
+
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'poppins',
+                        color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '${dt.day.toString()} -  ${dt.month.toString()} - ${dt.year.toString()}',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'poppins',
+                        color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    PreyerTimesContainer(),
+
+                    SizedBox(height: 20),
+                  ],
+                ),
+                Image.asset(
+                  (dt.hour > 19 || dt.hour < 5)
+                      ? 'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png'
+                      : 'Assets/images/image 4.png',
+                  height: 180,
+                  width: 190,
+                ),
+              ],
+            ),
+            InkWell(
+              borderRadius: BorderRadius.circular(20),
+              onTap: () async {
+                await _getPageNumber();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SurahContent(
+                      startPage: latestpagenumber ?? 1,
+                      surahName: surahName ?? 'الفاتحة',
+                      isDark: isDark,
+                    ),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Container(
+                  height: 75,
+
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1),
+                    color: isDark ? kbackgroundColor : kbackgroundColor,
+                    borderRadius: BorderRadiusDirectional.circular(16),
+                  ),
+                  child: Center(
+                    child: ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 18),
+                      leading: Icon(
+                        Icons.arrow_back_ios,
+                        color: isDark
+                            ? ksecondaryBackgroundColor
+                            : ksecondaryBackgroundColor,
+                      ),
+                      title: Text(
+                        'قرأتها مؤخرا ',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: isDark
+                              ? ksecondaryBackgroundColor
+                              : ksecondaryBackgroundColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'times',
+                          fontSize: 16,
                         ),
                       ),
-                      Image.asset(
-                        (dt.hour > 19 || dt.hour < 5)
-                            ? 'Assets/images/—Pngtree—hand drawn cartoon praying ramadan_5351151 1.png'
-                            : 'Assets/images/image 4.png',
-                        height: 200,
-                        width: 200,
+                      subtitle: Text(
+                        'سورة $surahName - ص $latestpagenumber',
+
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: isDark
+                              ? ksecondaryBackgroundColor
+                              : ksecondaryBackgroundColor,
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
-            SizedBox(height: 30),
+
+            SizedBox(height: 42),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Row(
@@ -298,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: isSelected
                               ? isDark
                                     ? ksecondaryBackgroundColor
-                                    : kbackgroundColor
+                                    : kdarkColor
                               : isDark
                               ? kdarkColor
                               : ksecondaryBackgroundColor,
@@ -347,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : ksecondaryBackgroundColor
                             : isDark
                             ? ksecondaryBackgroundColor
-                            : kbackgroundColor,
+                            : kdarkColor,
                         borderRadius: BorderRadiusDirectional.circular(16),
                       ),
                       child: Center(

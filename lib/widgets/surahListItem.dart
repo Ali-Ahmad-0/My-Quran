@@ -30,7 +30,7 @@ class Surah_list_item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -49,7 +49,9 @@ class Surah_list_item extends StatelessWidget {
 
         child: Container(
           height: 70,
+
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 width: 7,
@@ -71,14 +73,14 @@ class Surah_list_item extends StatelessWidget {
                     BoxShadow(
                       color: isDark
                           ? Colors.white.withOpacity(
-                              0.1,
+                              0.2,
                             ) // subtle light shadow for dark mode
                           : Colors.black.withOpacity(
-                              0.5,
+                              0.3,
                             ), // subtle dark shadow for light mode
-                      spreadRadius: 1, // how much the shadow spreads
+                      spreadRadius: 0.7, // how much the shadow spreads
                       blurRadius: 10, // how soft the shadow is
-                      offset: Offset(1, 5), // shadow position: x, y
+                      offset: Offset(-3, 3), // shadow position: x, y
                     ),
                   ],
                 ),
@@ -114,16 +116,13 @@ class Surah_list_item extends StatelessWidget {
                           ),
                         )
                       : SizedBox(),
-                  trailing: Hero(
-                    tag: 1,
-                    child: Text(
-                      '$name',
-                      style: TextStyle(
-                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Amiri',
-                      ),
+                  trailing: Text(
+                    '$name',
+                    style: TextStyle(
+                      color: isDark ? ksecondaryBackgroundColor : ktextColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Amiri',
                     ),
                   ),
                 ),

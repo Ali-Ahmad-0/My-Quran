@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SurahContent extends StatelessWidget {
+class SurahContent extends StatefulWidget {
   final int startPage;
   final String surahName;
   final bool isDark;
@@ -12,19 +13,41 @@ class SurahContent extends StatelessWidget {
     required this.surahName,
     required this.isDark,
   });
+
+  @override
+  State<SurahContent> createState() => _SurahContentState();
+}
+
+class _SurahContentState extends State<SurahContent> {
+  late PageController _pageController;
+  Future<void> _setPageNumber(int page ,String name) async {
+    final prfs = await SharedPreferences.getInstance();
+    prfs.setInt('latestPageNumber', page);
+    prfs.setString('surahName', name);
+  }
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: widget.startPage - 1);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    PageController _pageController = PageController(initialPage: startPage - 1);
     final screenSize = MediaQuery.of(context).size;
     final orientation = MediaQuery.of(context).orientation;
     final portraitHeight = orientation == Orientation.portrait
         ? screenSize.height * 0.95
         : screenSize.height * 3;
     return Scaffold(
-      backgroundColor: isDark ? ktextColor : ksecondaryBackgroundColor,
+      backgroundColor: widget.isDark ? ktextColor : ksecondaryBackgroundColor,
       body: PageView.builder(
-        controller: _pageController ?? PageController(initialPage: 0),
+        controller: _pageController,
         reverse: true,
+        onPageChanged: (index) {
+          _setPageNumber(index + 1 , widget.surahName);
+        },
         itemCount: pageImagePath.length,
         itemBuilder: (context, index) {
           return ListView(
@@ -32,7 +55,7 @@ class SurahContent extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: isDark
+                child: widget.isDark
                     ? ColorFiltered(
                         colorFilter: const ColorFilter.matrix(<double>[
                           -1, 0, 0, 0, 255, // Red
@@ -63,16 +86,20 @@ class SurahContent extends StatelessWidget {
                         fontFamily: 'amiri',
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
+                        color: widget.isDark
+                            ? ksecondaryBackgroundColor
+                            : ktextColor,
                       ),
                     ),
                     Text(
-                      '$surahName',
+                      '${widget.surahName}',
                       style: TextStyle(
                         fontFamily: 'amiri',
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
+                        color: widget.isDark
+                            ? ksecondaryBackgroundColor
+                            : ktextColor,
                       ),
                     ),
                   ],
