@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/views/salah_timetable.dart';
 
@@ -20,19 +21,16 @@ class PreyerTimesContainer extends StatelessWidget {
           borderRadius: BorderRadiusDirectional.circular(7),
         ),
 
-        height: 35,
+        height: 32.h,
         width: 160,
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 7),
-            child: Text(
-              'مواقيت الصلاة',
-              style: TextStyle(
-                color: ksecondaryBackgroundColor,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'poppins',
-              ),
+          child: Text(
+            'مواقيت الصلاة',
+            style: TextStyle(
+              color: ksecondaryBackgroundColor,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'poppins',
             ),
           ),
         ),

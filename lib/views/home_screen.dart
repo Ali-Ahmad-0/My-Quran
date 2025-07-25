@@ -6,7 +6,7 @@ import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
 import 'package:quran/models/surah_model.dart';
-import 'package:quran/views/salah_timetable.dart';
+import 'package:quran/views/athkar_screen.dart';
 import 'package:quran/views/surah_content.dart';
 import 'package:quran/widgets/preyer_times_container.dart';
 import 'package:quran/widgets/surahListItem.dart';
@@ -45,6 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return prfs.setBool('isDark', isDark);
   }
 
+  Future<void> _getPageNumber() async {
+    final prfs = await SharedPreferences.getInstance();
+    setState(() {
+      latestpagenumber = prfs.getInt('latestPageNumber') ?? 1;
+      surahName = prfs.getString('surahName') ?? 'الفاتحة';
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -70,13 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return '$hours:$minutes:$seconds';
   }
 
-  Future<void> _getPageNumber() async {
-    final prfs = await SharedPreferences.getInstance();
-    latestpagenumber = prfs.getInt('latestPageNumber');
-    surahName = prfs.getString('surahName');
-    setState(() {});
-  }
-
   @override
   void dispose() {
     timer.cancel(); // important to prevent memory leaks
@@ -95,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'My Quran',
+                  'Quran Plus',
                   style: TextStyle(
                     fontSize: 30,
                     color: isDark ? ksecondaryBackgroundColor : kdarkColor,
@@ -114,14 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
-
                     SizedBox(height: 5),
                     Text(
                       '$currentTime',
@@ -168,10 +167,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+
             InkWell(
               borderRadius: BorderRadius.circular(20),
               onTap: () async {
                 await _getPageNumber();
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -186,10 +187,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Container(
-                  height: 75,
+                  height: 80,
 
                   decoration: BoxDecoration(
-                    border: Border.all(width: 1),
+                    border: Border.all(width: 1, color: kbackgroundColor),
                     color: isDark ? kbackgroundColor : kbackgroundColor,
                     borderRadius: BorderRadiusDirectional.circular(16),
                   ),
@@ -219,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         textAlign: TextAlign.right,
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          fontSize: MediaQuery.of(context).size.width * 0.035,
                           fontWeight: FontWeight.bold,
                           color: isDark
                               ? ksecondaryBackgroundColor
@@ -231,67 +232,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
-            SizedBox(height: 42),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(20),
-                      onTap: () {
-                        setState(() {
-                          isSelected = true;
-                          isSurah = true;
-                        });
-                      },
-                      child: Container(
-                        height: 35,
-                        width: 75,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: isDark
-                                ? ksecondaryBackgroundColor
-                                : kdarkColor,
-                            width: 1,
-                          ),
-                          color: isSelected
-                              ? isDark
-                                    ? ksecondaryBackgroundColor
-                                    : kdarkColor
-                              : isDark
-                              ? kdarkColor
-                              : ksecondaryBackgroundColor,
-                          borderRadius: BorderRadiusDirectional.circular(16),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'السور',
-                            style: TextStyle(
-                              color: isSelected
-                                  ? isDark
-                                        ? kdarkColor
-                                        : ksecondaryBackgroundColor
-                                  : isDark
-                                  ? ksecondaryBackgroundColor
-                                  : kdarkColor,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'amiri',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
+            SizedBox(height: 45),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(20),
                     onTap: () {
                       setState(() {
-                        isSelected = false;
-                        isSurah = false;
+                        isSelected = true;
+                        isSurah = true;
                       });
                     },
                     child: Container(
@@ -306,24 +258,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         color: isSelected
                             ? isDark
-                                  ? kdarkColor
-                                  : ksecondaryBackgroundColor
+                                  ? ksecondaryBackgroundColor
+                                  : kdarkColor
                             : isDark
-                            ? ksecondaryBackgroundColor
-                            : kdarkColor,
+                            ? kdarkColor
+                            : ksecondaryBackgroundColor,
                         borderRadius: BorderRadiusDirectional.circular(16),
                       ),
                       child: Center(
                         child: Text(
-                          'الاذكار',
+                          'السور',
                           style: TextStyle(
                             color: isSelected
                                 ? isDark
-                                      ? ksecondaryBackgroundColor
-                                      : kdarkColor
+                                      ? kdarkColor
+                                      : ksecondaryBackgroundColor
                                 : isDark
-                                ? kdarkColor
-                                : ksecondaryBackgroundColor,
+                                ? ksecondaryBackgroundColor
+                                : kdarkColor,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'amiri',
                           ),
@@ -331,27 +283,91 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                InkWell(
+                  borderRadius: BorderRadius.circular(20),
+                  onTap: () {
+                    setState(() {
+                      isSelected = false;
+                      isSurah = false;
+                    });
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 75,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: isDark ? ksecondaryBackgroundColor : kdarkColor,
+                        width: 1,
+                      ),
+                      color: isSelected
+                          ? isDark
+                                ? kdarkColor
+                                : ksecondaryBackgroundColor
+                          : isDark
+                          ? ksecondaryBackgroundColor
+                          : kdarkColor,
+                      borderRadius: BorderRadiusDirectional.circular(16),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'الاذكار',
+                        style: TextStyle(
+                          color: isSelected
+                              ? isDark
+                                    ? ksecondaryBackgroundColor
+                                    : kdarkColor
+                              : isDark
+                              ? kdarkColor
+                              : ksecondaryBackgroundColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'amiri',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: isSurah ? Surahs.length : athkarMap.length,
 
               itemBuilder: (context, index) {
-                return Surah_list_item(
-                  isDark,
-                  Surahs[index].startPage!,
-                  isSurah: isSurah,
-                  isSurah ? Surahs[index].numberOfAyahs.toString() : '',
-                  isSurah
-                      ? Surahs[index].name.toString()
-                      : athkarMap.keys.toList()[index].toString(),
-                  isSurah ? Surahs[index].revelationType.toString() : '',
-                  (index + 1).toString(),
+                return GestureDetector(
+                  onTap: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => isSurah
+                            ? SurahContent(
+                                startPage: Surahs[index].startPage!,
+                                surahName: Surahs[index].name!,
+                                isDark: isDark,
+                              )
+                            : AthkarScreen(
+                                keys: athkarMap.keys.toList()[index].toString(),
+                                isDark: isDark,
+                              ),
+                      ),
+                    );
+                    setState(() {
+                      _getPageNumber();
+                    });
+                  },
+                  child: Surah_list_item(
+                    isDark,
+                    Surahs[index].startPage!,
+                    isSurah: isSurah,
+                    isSurah ? Surahs[index].numberOfAyahs.toString() : '',
+                    isSurah
+                        ? Surahs[index].name.toString()
+                        : athkarMap.keys.toList()[index].toString(),
+                    isSurah ? Surahs[index].revelationType.toString() : '',
+                    (index + 1).toString(),
+                  ),
                 );
               },
             ),

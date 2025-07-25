@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:quran/constants/colors.dart';
 import 'package:quran/cubit/prayer_cubit.dart';
 import 'package:quran/models/prayer_day.dart';
 import 'package:quran/widgets/prayer_table.dart';
@@ -76,7 +77,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                       child: Center(
                         child: Text(
                           'مواقيت الصلاة',
-                          style: TextStyle(fontSize: 42),
+                          style: TextStyle(fontSize: 42, color: ktextColor),
                         ),
                       ),
                     ),
@@ -93,11 +94,13 @@ class _SalahTimetableState extends State<SalahTimetable> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.053,
                                 fontWeight: FontWeight.bold,
+                                color: ktextColor,
                               ),
                             ),
                             Text(
                               ' حسب التوقيت المحلي لمدينة',
                               style: TextStyle(
+                                color: ktextColor,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.05,
 
@@ -108,17 +111,17 @@ class _SalahTimetableState extends State<SalahTimetable> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.12),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 60,
-                        vertical: 36,
+                        vertical: 34,
                       ),
                       child: Container(
                         height: 42,
                         width: 250,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white,
                           borderRadius: BorderRadiusDirectional.circular(32),
                         ),
                         child: Row(
@@ -186,7 +189,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
 
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'من فضلك ادخل مدينة';
+                              return 'من فضلك ادخل اسم مدينة';
                             }
                             return null;
                           },

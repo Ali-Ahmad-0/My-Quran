@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quran/constants/colors.dart'
-    show
-        kbackgroundColor,
-        kbuttonColor,
-        ksecondaryBackgroundColor,
-        ksecondtextColor,
-        ktextColor,
-        kdarkColor;
-import 'package:quran/views/athkar_screen.dart';
-import 'package:quran/views/ayahs_screen.dart';
-import 'package:quran/views/surah_content.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quran/constants/colors.dart' ;
 import 'package:quran/widgets/item_Leading.dart';
 
 class Surah_list_item extends StatelessWidget {
@@ -30,40 +20,27 @@ class Surah_list_item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => isSurah
-                  ? SurahContent(
-                      startPage: startPage,
-                      surahName: name,
-                      isDark: isDark,
-                    )
-                  : AthkarScreen(keys: name, isDark: isDark),
-            ),
-          );
-        },
-
-        child: Container(
-          height: 70,
-
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+      child: Container(
+        height: 75.h,
+      
+        child: Padding(
+          padding: const EdgeInsets.only(right: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: 7,
+                width: 7.w,
+      
+                height: 60.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: isDark ? Colors.grey : kbackgroundColor,
                 ),
               ),
-              SizedBox(width: 10),
               Container(
-                width: 335,
-                height: double.infinity,
+                width: 300.w,
+                height: 60.h,
                 decoration: BoxDecoration(
                   color: isDark
                       ? kdarkColor // match home screen dark background
@@ -80,7 +57,7 @@ class Surah_list_item extends StatelessWidget {
                             ), // subtle dark shadow for light mode
                       spreadRadius: 0.7, // how much the shadow spreads
                       blurRadius: 10, // how soft the shadow is
-                      offset: Offset(-3, 3), // shadow position: x, y
+                      offset: Offset(0, 3), // shadow position: x, y
                     ),
                   ],
                 ),
@@ -99,8 +76,10 @@ class Surah_list_item extends StatelessWidget {
                       revType,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
+                        fontSize: 16,
+                        color: isDark
+                            ? ksecondaryBackgroundColor
+                            : ktextColor,
                       ),
                     ),
                   ),
@@ -109,7 +88,7 @@ class Surah_list_item extends StatelessWidget {
                           'عدد الاّيات : $nOfSurahs ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
+                            fontSize: 16,
                             color: isDark
                                 ? ksecondaryBackgroundColor
                                 : ktextColor,
@@ -120,7 +99,7 @@ class Surah_list_item extends StatelessWidget {
                     '$name',
                     style: TextStyle(
                       color: isDark ? ksecondaryBackgroundColor : ktextColor,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Amiri',
                     ),

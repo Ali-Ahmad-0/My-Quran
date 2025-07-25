@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart' show StatelessWidget;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart' show SvgPicture;
@@ -28,7 +27,7 @@ class Leading extends StatelessWidget {
           Text(
             '$number',
             style: TextStyle(
-              fontSize: 16, // Adjust as needed
+              fontSize: 15, // Adjust as needed
               fontWeight: FontWeight.bold,
               fontFamily: 'Poppins',
               color: isDark ? ksecondaryBackgroundColor : ktextColor,

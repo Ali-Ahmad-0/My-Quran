@@ -4,7 +4,7 @@ import 'package:quran/constants/lists.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SurahContent extends StatefulWidget {
-  final int startPage;
+  int startPage;
   final String surahName;
   final bool isDark;
   SurahContent({
@@ -20,16 +20,18 @@ class SurahContent extends StatefulWidget {
 
 class _SurahContentState extends State<SurahContent> {
   late PageController _pageController;
-  Future<void> _setPageNumber(int page ,String name) async {
+  Future<void> _setPageNumber(int page, String name) async {
     final prfs = await SharedPreferences.getInstance();
-    prfs.setInt('latestPageNumber', page);
-    prfs.setString('surahName', name);
+    setState(() {
+      prfs.setInt('latestPageNumber', page);
+      prfs.setString('surahName', name);
+    });
   }
 
   @override
   void initState() {
     _pageController = PageController(initialPage: widget.startPage - 1);
-
+    _setPageNumber(widget.startPage, widget.surahName);
     super.initState();
   }
 
@@ -46,7 +48,7 @@ class _SurahContentState extends State<SurahContent> {
         controller: _pageController,
         reverse: true,
         onPageChanged: (index) {
-          _setPageNumber(index + 1 , widget.surahName);
+          _setPageNumber(index + 1, widget.surahName);
         },
         itemCount: pageImagePath.length,
         itemBuilder: (context, index) {
