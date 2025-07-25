@@ -170,9 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             InkWell(
               borderRadius: BorderRadius.circular(20),
-              onTap: () async {
-                await _getPageNumber();
-
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
