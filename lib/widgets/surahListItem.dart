@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quran/constants/colors.dart' ;
+import 'package:quran/constants/colors.dart';
 import 'package:quran/widgets/item_Leading.dart';
 
 class Surah_list_item extends StatelessWidget {
@@ -23,7 +23,7 @@ class Surah_list_item extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
       child: Container(
         height: 75.h,
-      
+
         child: Padding(
           padding: const EdgeInsets.only(right: 10),
           child: Row(
@@ -31,7 +31,7 @@ class Surah_list_item extends StatelessWidget {
             children: [
               Container(
                 width: 7.w,
-      
+
                 height: 60.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -77,21 +77,21 @@ class Surah_list_item extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: isDark
-                            ? ksecondaryBackgroundColor
-                            : ktextColor,
+                        color: isDark ? ksecondaryBackgroundColor : ktextColor,
+                        fontFamily: 'tajawal',
                       ),
                     ),
                   ),
                   subtitle: isSurah
                       ? Text(
-                          'عدد الاّيات : $nOfSurahs ',
+                          'عدد الآيات : $nOfSurahs ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: isDark
                                 ? ksecondaryBackgroundColor
                                 : ktextColor,
+                            fontFamily: 'tajawal',
                           ),
                         )
                       : SizedBox(),
@@ -99,9 +99,9 @@ class Surah_list_item extends StatelessWidget {
                     '$name',
                     style: TextStyle(
                       color: isDark ? ksecondaryBackgroundColor : ktextColor,
-                      fontSize: 20.sp,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Amiri',
+                      fontFamily: 'tajawal',
                     ),
                   ),
                 ),

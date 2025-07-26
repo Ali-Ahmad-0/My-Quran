@@ -209,12 +209,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ? ksecondaryBackgroundColor
                               : ksecondaryBackgroundColor,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'times',
+                          fontFamily: 'tajawal',
                           fontSize: 16,
                         ),
                       ),
                       subtitle: Text(
-                        'سورة $surahName - ص $latestpagenumber',
+                        'سورة $surahName - صفحة : $latestpagenumber',
 
                         textAlign: TextAlign.right,
                         style: TextStyle(
@@ -223,6 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: isDark
                               ? ksecondaryBackgroundColor
                               : ksecondaryBackgroundColor,
+                          fontFamily: 'tajawal',
                         ),
                       ),
                     ),
@@ -275,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ? ksecondaryBackgroundColor
                                 : kdarkColor,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'amiri',
+                            fontFamily: 'tajawal',
                           ),
                         ),
                       ),
@@ -319,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ? kdarkColor
                               : ksecondaryBackgroundColor,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'amiri',
+                          fontFamily: 'tajawal',
                         ),
                       ),
                     ),

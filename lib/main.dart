@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/views/home_screen.dart';
 import 'package:quran/views/splash_screen.dart';
 
 void main() {
+  HijriCalendar.setLocal("ar");
   runApp(const MyApp());
 }
 

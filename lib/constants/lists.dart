@@ -1018,7 +1018,7 @@ const List<Map<String, dynamic>> surahsList = [
   },
   {
     "number": 114,
-    "name": "النا",
+    "name": "الناس",
     "englishName": "An-Naas",
     "englishNameTranslation": "Mankind",
     "numberOfAyahs": 6,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/cubit/prayer_cubit.dart';
@@ -73,11 +74,15 @@ class _SalahTimetableState extends State<SalahTimetable> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 32),
+                      padding: const EdgeInsets.only(top: 30),
                       child: Center(
                         child: Text(
                           'مواقيت الصلاة',
-                          style: TextStyle(fontSize: 42, color: ktextColor),
+                          style: TextStyle(
+                            fontSize: 42,
+                            color: Colors.black,
+                            fontFamily: 'poppins',
+                          ),
                         ),
                       ),
                     ),
@@ -91,18 +96,18 @@ class _SalahTimetableState extends State<SalahTimetable> {
                             Text(
                               '${city ?? "مكة المكرمة"}',
                               style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.053,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.bold,
                                 color: ktextColor,
+                                fontFamily: 'poppins',
                               ),
                             ),
                             Text(
                               ' حسب التوقيت المحلي لمدينة',
                               style: TextStyle(
                                 color: ktextColor,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.05,
+                                fontSize: 17.sp,
+                                fontFamily: 'poppins',
 
                                 fontWeight: FontWeight.w500,
                               ),
@@ -111,7 +116,9 @@ class _SalahTimetableState extends State<SalahTimetable> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.12),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.123,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 60,
@@ -208,6 +215,7 @@ class _SalahTimetableState extends State<SalahTimetable> {
                             labelText: 'ابحث عن مدينة',
                             labelStyle: TextStyle(
                               color: Colors.white,
+                              fontFamily: 'tajawal',
                               fontSize: 16,
                             ),
                             focusColor: Colors.white,
