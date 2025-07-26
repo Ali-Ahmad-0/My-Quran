@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/constants/colors.dart';
 import 'package:quran/constants/lists.dart';
@@ -127,18 +128,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'poppins',
+                        fontFamily: 'tajwal',
                         color: isDark ? ksecondaryBackgroundColor : kdarkColor,
                       ),
                     ),
                     SizedBox(height: 5),
                     Text(
-                      hejri.toFormat('dd MMMM yyyy'),
+                      hejri.toFormat('dd MMMM yyyy') + ' هـ',
 
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'poppins',
+                        fontFamily: 'tajawal',
                         color: isDark ? ksecondaryBackgroundColor : kdarkColor,
                       ),
                     ),
