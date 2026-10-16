@@ -30,7 +30,7 @@ class PreyerTimesContainer extends StatelessWidget {
               color: ksecondaryBackgroundColor,
               fontSize: 15.sp,
               fontWeight: FontWeight.bold,
-              fontFamily: 'poppins',
+              fontFamily: 'tajawal',
             ),
           ),
         ),
